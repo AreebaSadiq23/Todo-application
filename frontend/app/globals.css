@@ -1,76 +1,130 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+  /* Global Color Palette */
+  --color-white: 255, 255, 255;
+  --color-black: 0, 0, 0;
+  --color-green-800: oklch(44.8% 0.119 151.328); /* User specified green */
+  --color-green-700: oklch(35% 0.119 151.328); /* A slightly darker green for hover states */
 
-@layer base {
+
+  /* Light Mode Defaults */
+  --foreground-rgb: var(--color-black);
+  --background-start-rgb: 245, 245, 245; /* Off-white */
+  --background-end-rgb: var(--color-white);
+
+  --primary: var(--color-green-800);
+  --primary-text: var(--color-white);
+  --secondary-foreground: 100, 116, 139; /* Slate 500 */
+  --card-background: var(--color-white);
+  --card-border: 229, 231, 235; /* Gray 200 */
+  --input-background: var(--color-white);
+  --input-border: 209, 213, 219; /* Gray 300 */
+  --destructive-foreground: 239, 68, 68; /* Red 500 */
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
-    --background: 0 0% 100%; /* white */
-    --foreground: 222.2 47.4% 11.2%; /* dark black */
+    --foreground-rgb: var(--color-white);
+    --background-start-rgb: 20, 20, 20; /* Darker grey */
+    --background-end-rgb: var(--color-black);
 
-    --muted: 210 40% 96.1%; /* light gray */
-    --muted-foreground: 215.4 16.3% 46.9%; /* gray */
-
-    --popover: 0 0% 100%; /* white */
-    --popover-foreground: 222.2 47.4% 11.2%; /* dark black */
-
-    --border: 214.3 31.8% 91.4%; /* light gray border */
-    --input: 214.3 31.8% 91.4%; /* light gray input border */
-    --card: 0 0% 100%; /* white */
-    --card-foreground: 222.2 47.4% 11.2%; /* dark black */
-
-    --primary: 151.328 11.9% 44.8%; /* green */
-    --primary-foreground: 0 0% 100%; /* white */
-
-    --secondary: 210 40% 96.1%; /* light gray */
-    --secondary-foreground: 222.2 47.4% 11.2%; /* dark black */
-
-    --accent: 210 40% 96.1%; /* light gray */
-    --accent-foreground: 222.2 47.4% 11.2%; /* dark black */
-
-    --destructive: 0 84.2% 60.2%; /* red */
-    --destructive-foreground: 0 0% 100%; /* white */
-
-    --ring: 222.2 84% 4.9%; /* dark ring */
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%; /* dark background */
-    --foreground: 210 40% 98%; /* light white */
-
-    --muted: 217.2 32.6% 17.5%; /* darker gray */
-    --muted-foreground: 215 20.4% 65.5%; /* light gray */
-
-    --popover: 222.2 84% 4.9%; /* dark popover */
-    --popover-foreground: 210 40% 98%; /* light white */
-
-    --border: 217.2 32.6% 17.5%; /* darker gray border */
-    --input: 217.2 32.6% 17.5%; /* darker gray input border */
-    --card: 222.2 84% 4.9%; /* dark card */
-    --card-foreground: 210 40% 98%; /* light white */
-
-    --primary: 151.328 11.9% 44.8%; /* green */
-    --primary-foreground: 210 40% 98%; /* light white */
-
-    --secondary: 217.2 32.6% 17.5%; /* darker gray */
-    --secondary-foreground: 210 40% 98%; /* light white */
-
-    --accent: 217.2 32.6% 17.5%; /* darker gray */
-    --accent-foreground: 210 40% 98%; /* light white */
-
-    --destructive: 0 62.8% 30.6%; /* dark red */
-    --destructive-foreground: 210 40% 98%; /* light white */
-
-    --ring: 212.7 26.8% 83.9%; /* light ring */
+    --primary: var(--color-green-800);
+    --primary-text: var(--color-white);
+    --secondary-foreground: 148, 163, 184; /* Slate 400 */
+    --card-background: 23, 23, 23; /* Neutral 900 */
+    --card-border: 38, 38, 38; /* Neutral 800 */
+    --input-background: 23, 23, 23; /* Neutral 900 */
+    --input-border: 63, 63, 70; /* Zinc 700 */
+    --destructive-foreground: 252, 165, 165; /* Red 300 */
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    );
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Base styles for shadcn components, adjusted for theme */
+.shadcn-card {
+  background-color: rgb(var(--card-background));
+  border: 1px solid rgb(var(--card-border));
+  color: rgb(var(--foreground-rgb));
+}
+
+.shadcn-input {
+  background-color: rgb(var(--input-background));
+  border: 1px solid rgb(var(--input-border));
+  color: rgb(var(--foreground-rgb));
+}
+
+.shadcn-input::placeholder {
+  color: rgb(var(--secondary-foreground));
+}
+
+.shadcn-button-primary {
+  background-color: var(--primary);
+  color: rgb(var(--primary-text));
+}
+
+.shadcn-button-primary:hover {
+  background-color: var(--color-green-700);
+}
+
+.shadcn-button-link {
+  color: var(--primary);
+}
+
+.shadcn-label {
+  color: rgb(var(--foreground-rgb));
+}
+
+.shadcn-text-red {
+  color: rgb(var(--destructive-foreground));
+}
+
+.app-header {
+  background-color: oklch(44.8% 0.119 151.328); /* Approximate original primary green */
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Simple shadow */
+  color: white; /* Default text color for header */
+}
+
+.app-header a {
+  color: white;
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.app-main-content {
+  flex-grow: 1;
+  width: 100%;
+  max-width: 1200px; /* Equivalent to container max-width */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem; /* Equivalent to container padding */
 }

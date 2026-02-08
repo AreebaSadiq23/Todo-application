@@ -40,10 +40,10 @@ const TaskItem = ({ task, onEdit, onDelete, onToggleComplete }: TaskItemProps) =
         </div>
       </div>
       <div className={styles.taskActions}>
-        <Button variant="outline" onClick={() => onEdit(task)} className={styles.editButton}>
+        <Button onClick={() => onEdit(task)} className={styles.editButton}>
           Edit
         </Button>
-        <Button variant="destructive" onClick={() => onDelete(task.id)} className={styles.deleteButton}>
+        <Button onClick={() => onDelete(task.id)} className={styles.deleteButton}>
           Delete
         </Button>
       </div>
@@ -156,10 +156,10 @@ const TaskForm = ({ initialTask, onSave, onCancel }: TaskFormProps) => {
           </div>
           {error && <p className={styles.errorText}>{error}</p>}
           <div className="flex justify-end space-x-2">
-            <Button type="button" variant="outline" onClick={onCancel} className={styles.buttonOutline}>
+            <Button type="button" onClick={onCancel} className={styles.buttonOutline}>
               Cancel
             </Button>
-            <Button type="submit" disabled={loading} className={styles.addButton}>
+            <Button type="submit" disabled={loading}>
               {loading ? "Saving..." : "Save Task"}
             </Button>
           </div>

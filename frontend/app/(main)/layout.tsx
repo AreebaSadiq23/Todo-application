@@ -26,15 +26,15 @@ export default function MainLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="bg-primary p-4 shadow-md flex justify-between items-center">
-        <Link href="/tasks" className="text-2xl font-bold">
+      <header className="app-header">
+        <Link href="/tasks">
           Todo App
         </Link>
-        <Button onClick={logout} variant="destructive">
+        <Button onClick={logout}>
           Logout
         </Button>
       </header>
-      <main className="flex-grow container main-content-area">
+      <main className="app-main-content">
         {children}
       </main>
     </div>
