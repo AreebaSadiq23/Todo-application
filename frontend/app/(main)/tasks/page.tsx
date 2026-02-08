@@ -143,7 +143,12 @@ const TaskForm = ({ initialTask, onSave, onCancel }: TaskFormProps) => {
                           <select
                             id="status"
                             value={status}
-                            onChange={(e) => setStatus(e.target.value)}
+                            onChange={(e) => {
+                              const newStatus = e.target.value;
+                              if (newStatus === "pending" || newStatus === "completed") {
+                                setStatus(newStatus);
+                              }
+                            }}
                             className={styles.input}            >
               <option value="pending">Pending</option>
               <option value="completed">Completed</option>

@@ -25,6 +25,7 @@ export default function HomePage() {
             </Link>
           </div>
         </AnimationWrapper>
+        
         <AnimationWrapper animationClass={styles.fadeInRight} delay={0.4}>
           <div className={styles.heroImageContainer}>
             <Image
