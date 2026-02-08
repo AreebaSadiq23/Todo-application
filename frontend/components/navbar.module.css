@@ -1,0 +1,82 @@
+/* frontend/components/navbar.module.css */
+.navbar {
+  background-color: rgb(var(--color-black)); /* Black background */
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary); /* Green color for logo */
+  text-decoration: none;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.navItem {
+  margin: 0;
+}
+
+.navLink {
+  color: rgb(var(--color-white)); /* White text for links */
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding-bottom: 0.2rem;
+}
+
+.navLink:hover,
+.navLink.active {
+  color: var(--primary); /* Green on hover/active */
+  border-bottom: 2px solid var(--primary);
+}
+
+.authLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.authButton {
+  background-color: var(--primary);
+  color: var(--primary-text);
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.authButton:hover {
+  background-color: var(--color-green-700);
+  transform: translateY(-1px);
+}
+
+.logoutButton {
+  background-color: var(--destructive-foreground); /* Red color for logout */
+  color: rgb(var(--color-white));
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.logoutButton:hover {
+  background-color: oklch(35% 0.119 10); /* Darker red */
+}

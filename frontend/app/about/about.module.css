@@ -1,0 +1,60 @@
+/* frontend/app/about/about.module.css */
+.aboutContainer {
+  padding: 6rem 2rem;
+  background-color: rgb(var(--background-start-rgb));
+  color: rgb(var(--foreground-rgb));
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: rgb(var(--secondary-foreground));
+  line-height: 1.6;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contentBlock {
+  background-color: rgb(var(--card-background));
+  border: 1px solid rgb(var(--card-border));
+  border-radius: 0.75rem;
+  padding: 2.5rem 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contentBlock:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contentBlock h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.contentBlock p {
+  color: rgb(var(--secondary-foreground));
+  font-size: 1rem;
+  line-height: 1.8;
+}

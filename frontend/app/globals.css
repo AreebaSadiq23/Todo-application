@@ -1,0 +1,104 @@
+:root {
+  /* Global Color Palette */
+  --color-white: 255, 255, 255;
+  --color-black: 0, 0, 0;
+  --color-green-800: oklch(44.8% 0.119 151.328); /* User specified green */
+  --color-green-700: oklch(35% 0.119 151.328); /* A slightly darker green for hover states */
+
+
+  /* Light Mode Defaults */
+  --foreground-rgb: var(--color-black);
+  --background-start-rgb: 245, 245, 245; /* Off-white */
+  --background-end-rgb: var(--color-white);
+
+  --primary: var(--color-green-800);
+  --primary-text: var(--color-white);
+  --secondary-foreground: 100, 116, 139; /* Slate 500 */
+  --card-background: var(--color-white);
+  --card-border: 229, 231, 235; /* Gray 200 */
+  --input-background: var(--color-white);
+  --input-border: 209, 213, 219; /* Gray 300 */
+  --destructive-foreground: 239, 68, 68; /* Red 500 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: var(--color-white);
+    --background-start-rgb: 20, 20, 20; /* Darker grey */
+    --background-end-rgb: var(--color-black);
+
+    --primary: var(--color-green-800);
+    --primary-text: var(--color-white);
+    --secondary-foreground: 148, 163, 184; /* Slate 400 */
+    --card-background: 23, 23, 23; /* Neutral 900 */
+    --card-border: 38, 38, 38; /* Neutral 800 */
+    --input-background: 23, 23, 23; /* Neutral 900 */
+    --input-border: 63, 63, 70; /* Zinc 700 */
+    --destructive-foreground: 252, 165, 165; /* Red 300 */
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    );
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Base styles for shadcn components, adjusted for theme */
+.shadcn-card {
+  background-color: rgb(var(--card-background));
+  border: 1px solid rgb(var(--card-border));
+  color: rgb(var(--foreground-rgb));
+}
+
+.shadcn-input {
+  background-color: rgb(var(--input-background));
+  border: 1px solid rgb(var(--input-border));
+  color: rgb(var(--foreground-rgb));
+}
+
+.shadcn-input::placeholder {
+  color: rgb(var(--secondary-foreground));
+}
+
+.shadcn-button-primary {
+  background-color: var(--primary);
+  color: rgb(var(--primary-text));
+}
+
+.shadcn-button-primary:hover {
+  background-color: var(--color-green-700);
+}
+
+.shadcn-button-link {
+  color: var(--primary);
+}
+
+.shadcn-label {
+  color: rgb(var(--foreground-rgb));
+}
+
+.shadcn-text-red {
+  color: rgb(var(--destructive-foreground));
+}

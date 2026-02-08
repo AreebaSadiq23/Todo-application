@@ -1,0 +1,113 @@
+/* frontend/app/(auth)/auth.module.css */
+.authContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* Use a subtle gradient or solid color based on the theme from globals.css */
+  background: linear-gradient(135deg, rgb(var(--background-start-rgb)) 0%, rgb(var(--background-end-rgb)) 100%);
+  padding: 1rem;
+}
+
+.authCard {
+  width: 100%;
+  max-width: 400px;
+  background-color: rgb(var(--card-background));
+  border: 1px solid rgb(var(--card-border));
+  border-radius: 0.75rem; /* Slightly more rounded */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.06); /* Enhanced shadow */
+  padding: 2.5rem 2rem; /* Increased padding */
+  text-align: center;
+}
+
+.authTitle {
+  font-size: 2.25rem; /* Larger title */
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: rgb(var(--foreground-rgb));
+}
+
+.formSpaceY {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem; /* Space between form groups */
+}
+
+.formGroup {
+  text-align: left;
+}
+
+.label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: rgb(var(--foreground-rgb));
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(var(--input-border));
+  background-color: rgb(var(--input-background));
+  color: rgb(var(--foreground-rgb));
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(var(--primary), 0.2);
+}
+
+.input::placeholder {
+  color: rgb(var(--secondary-foreground));
+}
+
+.errorText {
+  color: rgb(var(--destructive-foreground));
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--primary);
+  color: var(--primary-text);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 1.5rem;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: var(--color-green-700);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.linkText {
+  font-size: 0.9rem;
+  color: rgb(var(--foreground-rgb));
+  margin-top: 1.5rem;
+}
+
+.link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: var(--color-green-700);
+}
