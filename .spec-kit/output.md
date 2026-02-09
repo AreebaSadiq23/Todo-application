@@ -1,4 +1,3 @@
-
 ## Stylistic Changes to Cancel Button
 
 I have added specific styling for the "Cancel" button within the task form on the dashboard. This includes:

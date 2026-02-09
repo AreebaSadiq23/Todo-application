@@ -155,11 +155,11 @@ const TaskForm = ({ initialTask, onSave, onCancel }: TaskFormProps) => {
             </select>
           </div>
           {error && <p className={styles.errorText}>{error}</p>}
-          <div className="flex justify-end space-x-2">
+          <div className={styles.formActionButtons}>
             <Button type="button" onClick={onCancel} className={styles.buttonOutline}>
               Cancel
             </Button>
-            <Button type="submit" disabled={loading}>
+            <Button type="submit" disabled={loading} className={styles.saveButton}>
               {loading ? "Saving..." : "Save Task"}
             </Button>
           </div>
