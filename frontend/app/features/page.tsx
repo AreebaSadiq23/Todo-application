@@ -37,7 +37,7 @@ export default function FeaturesPage() {
         </div>
         <div className={styles.featureImageContainer}>
           <Image
-            src="/images/1.jfif"
+            src="images/1.jfif"
             alt="Features Showcase"
             width={600}
             height={400}
