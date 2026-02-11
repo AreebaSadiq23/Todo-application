@@ -29,7 +29,7 @@ export default function HomePage() {
         <AnimationWrapper animationClass={styles.fadeInRight} delay={0.4}>
           <div className={styles.heroImageContainer}>
             <Image
-              src="/images/3.jfif"
+              src="/public/images/3.jfif"
               alt="Task Management"
               width={600}
               height={600}
