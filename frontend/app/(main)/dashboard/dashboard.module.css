@@ -1,0 +1,473 @@
+/* frontend/app/(main)/dashboard/dashboard.module.css */
+
+.dashboardPage {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(at top left, rgba(var(--background-start-rgb), 0.8) 0%, transparent 50%),
+              radial-gradient(at bottom right, rgba(var(--background-end-rgb), 0.8) 0%, transparent 50%),
+              rgb(var(--background-start-rgb)); /* Subtle radial gradient background */
+  color: rgb(var(--foreground-rgb));
+  min-height: calc(100vh - var(--navbar-height, 4rem));
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative; /* Needed for pseudo-elements or absolute positioning later if desired */
+  overflow: hidden; /* Prevent gradient from causing scrollbars */
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem; /* More space below header */
+  padding-bottom: 2rem; /* More space below content in header */
+  border-bottom: 1px solid rgba(var(--foreground-rgb), 0.1);
+  position: relative;
+  z-index: 1; /* Ensure header content is above background effects */
+}
+
+.header h1 {
+  font-size: 4rem; /* Larger font size for impact */
+  font-weight: 900; /* Bolder font */
+  color: var(--primary);
+  margin-bottom: 0.75rem; /* Slightly more space below title */
+  letter-spacing: -0.06em; /* Tighter letter spacing */
+  background: linear-gradient(90deg, var(--primary), oklch(60% 0.15 150));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header p {
+  font-size: 1.1rem;
+  color: rgb(var(--secondary-foreground));
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contentWrapper {
+  display: flex;
+  gap: 3rem; /* Increased gap */
+  flex-grow: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 1; /* Ensure content is above background effects */
+}
+
+.sidebar {
+
+  flex: 0 0 280px; /* Slightly wider sidebar */
+
+  background-color: rgb(var(--card-background));
+
+  padding: 2rem; /* Increased padding */
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05); /* Enhanced shadow */
+
+  border: 1px solid rgba(var(--foreground-rgb), 0.1); /* Slightly softer border */
+
+  height: fit-content;
+
+  position: sticky;
+
+  top: calc(var(--navbar-height, 4rem) + 1rem); /* Offset from navbar */
+
+}
+
+
+
+.sidebar h2 {
+
+  font-size: 1.6rem; /* Slightly larger sidebar title */
+
+  color: rgb(var(--foreground-rgb));
+
+  margin-bottom: 1.8rem; /* More space below title */
+
+  padding-bottom: 1rem;
+
+  border-bottom: 1px solid rgba(var(--foreground-rgb), 0.1);
+
+}
+
+
+
+.sidebar button {
+
+  display: block;
+
+  width: 100%;
+
+  padding: 0.9rem 1.2rem; /* Increased padding */
+
+  margin-bottom: 0.8rem; /* Slightly more space between buttons */
+
+  background-color: transparent;
+
+  color: rgb(var(--secondary-foreground));
+
+  border: none;
+
+  border-radius: 10px; /* Slightly more rounded buttons */
+
+  font-size: 1.05rem;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+
+}
+
+
+
+.sidebar button:hover {
+
+  background-color: rgba(var(--primary-rgb), 0.15); /* Stronger hover background */
+
+  color: var(--primary);
+
+  transform: translateX(8px); /* More pronounced slide effect */
+
+  box-shadow: 0 2px 10px rgba(var(--primary-rgb), 0.1); /* Subtle shadow on hover */
+
+}
+
+
+
+.sidebar button.activeFilter {
+
+  background-color: var(--primary);
+
+  color: var(--primary-text);
+
+  font-weight: 700; /* Bolder active filter */
+
+  box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.3); /* Stronger shadow for active state */
+
+  transform: translateX(0);
+
+}
+
+
+
+.sidebar button.activeFilter:hover {
+
+  background-color: oklch(60% 0.15 150);
+
+  color: var(--primary-text);
+
+}
+
+.mainContent {
+  flex: 1;
+  background-color: rgb(var(--card-background));
+  padding: 3rem; /* Increased padding */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05); /* Enhanced shadow */
+  border: 1px solid rgba(var(--foreground-rgb), 0.1); /* Slightly softer border */
+}
+
+.taskFormSection {
+  margin-bottom: 3.5rem; /* More space below form section */
+  padding: 2.5rem; /* Increased padding */
+  border-bottom: none; /* Remove existing border */
+  background-color: rgb(var(--card-background)); /* Consistent background */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow for the form section */
+  border: 1px solid rgba(var(--foreground-rgb), 0.08); /* Lighter border */
+}
+
+.taskFormSection h2 {
+  font-size: 2rem;
+  color: rgb(var(--foreground-rgb));
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.taskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.taskForm input[type="text"],
+.taskForm textarea,
+.taskForm input[type="date"] {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(var(--foreground-rgb), 0.2);
+  background-color: rgb(var(--input-background));
+  color: rgb(var(--foreground-rgb));
+  font-size: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); /* Subtle shadow for inputs */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.taskForm input[type="text"]:focus,
+.taskForm textarea:focus,
+.taskForm input[type="date"]:focus,
+.taskCardActions button:focus,
+.sidebar button:focus {
+  outline: none; /* Remove default outline */
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.3), 0 1px 3px rgba(0, 0, 0, 0.08); /* Keep subtle input shadow on focus */
+}
+
+
+.taskForm textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.taskForm input::placeholder,
+.taskForm textarea::placeholder {
+  color: rgb(var(--secondary-foreground));
+  opacity: 0.7;
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.cancelButton, .submitButton {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+}
+
+.cancelButton {
+  background-color: rgb(var(--destructive-foreground));
+  color: rgb(var(--primary-text));
+}
+
+.cancelButton:hover {
+  background-color: oklch(35% 0.119 10);
+  transform: translateY(-2px);
+}
+
+.submitButton {
+  background-color: var(--primary);
+  color: var(--primary-text);
+  box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.3);
+}
+
+.submitButton:hover {
+  background-color: oklch(60% 0.15 150);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.4);
+}
+
+.taskListSection h2 {
+  font-size: 2rem;
+  color: rgb(var(--foreground-rgb));
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.taskListGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly wider min-width for cards */
+  gap: 2rem; /* Increased gap */
+}
+
+.noTasksMessage {
+  color: rgb(var(--secondary-foreground));
+  font-style: italic;
+  text-align: center;
+  grid-column: 1 / -1; /* Span across all columns */
+  margin-top: 1rem;
+  padding: 2rem;
+  background-color: rgba(var(--card-background-rgb), 0.5);
+  border-radius: 8px;
+}
+
+.taskCard {
+  background-color: rgb(var(--card-background));
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(var(--foreground-rgb), 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07), 0 2px 8px rgba(0, 0, 0, 0.03); /* More pronounced default shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.taskCard:hover {
+  transform: translateY(-7px); /* Slightly more lift on hover */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08); /* Stronger shadow on hover */
+}
+
+.taskCard.completed {
+  opacity: 0.7; /* Slightly more opaque to show completion */
+  border-color: rgba(var(--primary-rgb), 0.5); /* Primary border color with transparency */
+  box-shadow: 0 2px 10px rgba(var(--primary-rgb), 0.1); /* Subtle shadow for completed tasks */
+  background-color: rgba(var(--primary-rgb), 0.08); /* More noticeable tinted background for completed */
+}
+
+.taskCard.myDayTask {
+  border-left: 5px solid var(--accent-color-myday, oklch(75% 0.15 250)); /* Use a variable or default vibrant accent color */
+  background-color: rgba(oklch(75% 0.15 250), 0.1); /* Clearer, subtle background tint for My Day */
+}
+
+
+.taskCard h3 {
+  font-size: 1.25rem;
+  color: rgb(var(--foreground-rgb));
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+
+.taskCard.completed h3 {
+  text-decoration: line-through;
+  color: rgb(var(--secondary-foreground));
+}
+
+.taskDescription {
+  font-size: 0.95rem;
+  color: rgb(var(--secondary-foreground));
+  margin-bottom: 1rem;
+  text-align: left;
+  flex-grow: 1; /* Allows description to take up available space */
+}
+
+.taskDueDate {
+  font-size: 0.85rem;
+  color: rgb(var(--secondary-foreground));
+  margin-bottom: 1rem;
+  text-align: left;
+  font-style: italic;
+}
+
+.taskCardActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  justify-content: flex-end;
+}
+
+.taskCardActions button {
+  padding: 0.7rem 1.2rem; /* Increased padding */
+  border-radius: 8px; /* Consistent border-radius */
+  font-size: 0.9rem; /* Slightly larger font size */
+  font-weight: 600; /* Bolder text */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for all buttons */
+}
+
+.completeButton {
+  background-color: var(--primary);
+  color: var(--primary-text);
+}
+
+.completeButton:hover {
+  background-color: oklch(60% 0.15 150);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+}
+
+.myDayButton {
+  background-color: oklch(75% 0.15 250); /* My Day specific color */
+  color: oklch(20% 0.02 250);
+}
+
+.myDayButton:hover {
+  background-color: oklch(70% 0.15 250);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(oklch(75% 0.15 250), 0.2);
+}
+
+.editButton {
+  background-color: rgb(var(--accent-rgb));
+  color: rgb(var(--primary-text));
+}
+
+.editButton:hover {
+  background-color: oklch(50% 0.15 270);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.2);
+}
+
+.deleteButton {
+  background-color: rgb(var(--destructive-foreground));
+  color: rgb(var(--primary-text));
+}
+
+.deleteButton:hover {
+  background-color: oklch(35% 0.119 10);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--destructive-foreground), 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .contentWrapper {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+  .sidebar {
+    position: static;
+    flex: none;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  .mainContent {
+    padding: 1.5rem;
+  }
+  .header h1 {
+    font-size: 2.5rem;
+  }
+  .header p {
+    font-size: 1rem;
+  }
+  .taskForm {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  .taskFormSection h2, .taskListSection h2 {
+    font-size: 1.75rem;
+  }
+  .taskListGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboardPage {
+    padding: 1rem;
+  }
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  .sidebar h2 {
+    font-size: 1.3rem;
+  }
+  .taskCard h3 {
+    font-size: 1.1rem;
+  }
+  .taskDescription, .taskDueDate {
+    font-size: 0.8rem;
+  }
+  .taskCardActions button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.75rem;
+  }
+}

@@ -9,7 +9,7 @@ export default function Footer() {
       <div className={styles.footerContainer}>
         <div className={styles.footerColumn}>
           <Link href="/" className={styles.logo}>
-            TaskMaster
+            Todo-app
           </Link>
           <p className={styles.description}>
             The ultimate solution for organizing your life and boosting your productivity.
@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
       </div>
       <div className={styles.copyright}>
-        © {new Date().getFullYear()} TaskMaster. All rights reserved.
+        © {new Date().getFullYear()} Todo-app. All rights reserved.
       </div>
     </footer>
   );

@@ -7,6 +7,7 @@ class UserBase(SQLModel):
     email: str = Field(index=True, unique=True)
 
 class User(UserBase, table=True):
+    __tablename__ = "user"
     id: Optional[int] = Field(default=None, primary_key=True)
     password_hash: str
     
@@ -25,6 +26,7 @@ class TaskBase(SQLModel):
     status: str = Field(default="pending")
 
 class Task(TaskBase, table=True):
+    __tablename__ = "task"
     id: Optional[int] = Field(default=None, primary_key=True)
     user_id: int = Field(foreign_key="user.id")
 

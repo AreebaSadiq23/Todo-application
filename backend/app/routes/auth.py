@@ -5,7 +5,7 @@ from passlib.context import CryptContext
 
 from ..db import get_session
 from ..models import User, UserCreate, UserRead
-from ..security import create_access_token
+from ..security import create_access_token, get_current_user
 
 router = APIRouter()
 
@@ -21,7 +21,7 @@ def register_user(user: UserCreate, session: Session = Depends(get_session)):
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
 
-    hashed_password = pwd_context.hash(user.password)
+    hashed_password = pwd_context.hash(user.password.encode('utf-8')[:72])
     db_user = User(username=user.username, email=user.email, password_hash=hashed_password)
     session.add(db_user)
     session.commit()
@@ -31,7 +31,7 @@ def register_user(user: UserCreate, session: Session = Depends(get_session)):
 @router.post("/login")
 def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), session: Session = Depends(get_session)):
     user = session.exec(select(User).where(User.username == form_data.username)).first()
-    if not user or not pwd_context.verify(form_data.password, user.password_hash):
+    if not user or not pwd_context.verify(form_data.password.encode('utf-8')[:72], user.password_hash):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect username or password",
@@ -45,3 +45,7 @@ def logout():
     # This is a placeholder. In a stateless JWT setup, the client is responsible for deleting the token.
     # If a token blacklist is implemented, this endpoint would add the token to the blacklist.
     return {"message": "Logout successful. Please discard the token on the client side."}
+
+@router.get("/me", response_model=UserRead)
+def read_users_me(current_user: User = Depends(get_current_user)):
+    return current_user

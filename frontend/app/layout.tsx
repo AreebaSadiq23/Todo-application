@@ -34,7 +34,7 @@ export default function RootLayout({
 }
 
 function AuthInterceptor({ children }: { children: React.ReactNode }) {
-  const { logout } = useAuth();
+  const { logout, isAuthenticated, user } = useAuth();
 
   useEffect(() => {
     setupAxiosInterceptors(logout);
@@ -42,7 +42,7 @@ function AuthInterceptor({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <Navbar />
+      <Navbar isAuthenticated={isAuthenticated} user={user} logout={logout} />
       <main>{children}</main>
       <Footer />
     </>

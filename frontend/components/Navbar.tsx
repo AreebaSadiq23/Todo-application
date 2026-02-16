@@ -2,17 +2,37 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useAuth } from "@/hooks/useAuth";
 import styles from './navbar.module.css';
 
-export default function Navbar() {
-  const { isAuthenticated, logout } = useAuth();
+interface User {
+  id: number;
+  username: string;
+  email: string;
+}
+
+interface NavbarProps {
+  isAuthenticated: boolean;
+  user: User | null;
+  logout: () => void;
+}
+
+export default function Navbar({ isAuthenticated, user, logout }: NavbarProps) {
   const pathname = usePathname();
+
+  const getInitial = (user: User | null) => {
+    if (user?.username) {
+      return user.username.charAt(0).toUpperCase();
+    }
+    if (user?.email) {
+      return user.email.charAt(0).toUpperCase();
+    }
+    return '';
+  };
 
   return (
     <nav className={styles.navbar}>
       <Link href="/" className={styles.logo}>
-        TaskMaster
+        Todo-app
       </Link>
       <ul className={styles.navList}>
         <li className={styles.navItem}>
@@ -30,28 +50,27 @@ export default function Navbar() {
             Features
           </Link>
         </li>
-        {isAuthenticated && (
-          <li className={styles.navItem}>
-            <Link href="/tasks" className={`${styles.navLink} ${pathname === "/tasks" ? styles.active : ""}`}>
-              Dashboard
-            </Link>
-          </li>
-        )}
+        <li className={styles.navItem}>
+          <Link href="/dashboard" className={`${styles.navLink} ${pathname === "/dashboard" ? styles.active : ""}`}>
+            Dashboard
+          </Link>
+        </li>
+
       </ul>
       <div className={styles.authLinks}>
-        {isAuthenticated ? (
-          <button onClick={logout} className={styles.logoutButton}>
-            Logout
-          </button>
-        ) : (
+        {isAuthenticated && user ? (
           <>
-            <Link href="/login" className={styles.authButton}>
-              Login
-            </Link>
-            <Link href="/signup" className={styles.authButton}>
-              Sign Up
-            </Link>
+            <div className={styles.profileIcon} title={user.username || user.email}>
+              {getInitial(user)}
+            </div>
+            <button onClick={logout} className={styles.logoutButton}>
+              Logout
+            </button>
           </>
+        ) : (
+          <Link href="/login" className={styles.loginTextLink}>
+            Login
+          </Link>
         )}
       </div>
     </nav>

@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 
 from .db import get_session
 from .models import User
+from sqlmodel import select
 
 load_dotenv()
 
@@ -45,7 +46,7 @@ def get_current_user(token: str = Depends(oauth2_scheme), session = Depends(get_
     except Exception:
         raise credentials_exception
     
-    user = session.query(User).filter(User.username == username).first()
+    user = session.exec(select(User).where(User.username == username)).first()
     if user is None:
         raise credentials_exception
     return user
