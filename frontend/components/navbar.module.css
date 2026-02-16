@@ -80,3 +80,19 @@
 .logoutButton:hover {
   background-color: oklch(35% 0.119 10); /* Darker red */
 }
+
+.profileIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary); /* Green background */
+  color: rgb(var(--color-black)); /* Black text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: default;
+  margin-right: 1rem;
+  border: 2px solid rgb(var(--color-white));
+}
