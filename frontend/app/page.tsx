@@ -15,24 +15,10 @@ const Home = () => {
             <input type="email" placeholder="Enter your email" className="email-input" />
             <button className="button-get-started">Get Started</button>
           </div>
-<<<<<<< HEAD
-        </AnimationWrapper>
-        
-        <AnimationWrapper animationClass={styles.fadeInRight} delay={0.4}>
-          <div className={styles.heroImageContainer}>
-            <Image
-              src="/public/images/3.jfif"
-              alt="Task Management"
-              width={600}
-              height={600}
-              className={styles.heroImage}
-              priority
-            />
-=======
+
           <div className="features-highlight">
             <p className="feature-item-highlight"><span className="tick-icon">&#10003;</span> No credit card required</p>
             <p className="feature-item-highlight"><span className="tick-icon">&#10003;</span> 12 days free trial</p>
->>>>>>> recover-uiux
           </div>
         </div>
         <div className="hero-image-right">
@@ -59,10 +45,6 @@ const Home = () => {
       </section>
     </div>
   );
-<<<<<<< HEAD
-}
-=======
 };
 
 export default Home;
->>>>>>> recover-uiux
