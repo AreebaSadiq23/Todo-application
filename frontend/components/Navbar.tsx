@@ -32,7 +32,7 @@ export default function Navbar({ isAuthenticated, user, logout }: NavbarProps) {
   return (
     <nav className={styles.navbar}>
       <Link href="/" className={styles.logo}>
-        TaskMaster
+        Todo-app
       </Link>
       <ul className={styles.navList}>
         <li className={styles.navItem}>
@@ -68,14 +68,9 @@ export default function Navbar({ isAuthenticated, user, logout }: NavbarProps) {
             </button>
           </>
         ) : (
-          <>
-            <Link href="/login" className={styles.authButton}>
-              Login
-            </Link>
-            <Link href="/signup" className={styles.authButton}>
-              Sign Up
-            </Link>
-          </>
+          <Link href="/login" className={styles.loginTextLink}>
+            Login
+          </Link>
         )}
       </div>
     </nav>

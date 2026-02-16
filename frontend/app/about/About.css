@@ -87,6 +87,7 @@ p {
   position: relative;
   z-index: 1;
   max-width: 900px;
+  text-align: center; /* Ensure content inside hero-content is centered */
 }
 
 .hero-content h1 {

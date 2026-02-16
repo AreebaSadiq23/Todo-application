@@ -1,6 +1,6 @@
 /* frontend/components/footer.module.css */
 .footer {
-  background-color: rgb(var(--color-black));
+  background-color: #1a1a1a; /* Darker background for the footer */
   color: rgb(var(--color-white));
   padding: 4rem 2rem 2rem 2rem;
   margin-top: auto; /* Push footer to the bottom */
@@ -14,12 +14,25 @@
   gap: 2rem;
 }
 
+@media (max-width: 768px) {
+  .footerContainer {
+    grid-template-columns: 1fr; /* Stack columns on small screens */
+    padding: 0 1rem; /* Add some horizontal padding */
+  }
+}
+
 .footerColumn {
   text-align: left;
 }
 
+@media (max-width: 768px) {
+  .footerColumn {
+    text-align: center; /* Center align columns on small screens */
+  }
+}
+
 .logo {
-  font-size: 2rem;
+  font-size: 2.2rem; /* Slightly larger logo font size */
   font-weight: 700;
   color: var(--primary);
   margin-bottom: 1rem;
@@ -68,8 +81,9 @@
 
 .socialLink {
   color: rgb(var(--secondary-foreground));
-  font-size: 1.5rem;
+  font-size: 1.2rem; /* Adjusted social link icon size */
   transition: color 0.3s ease;
+  margin-bottom: 0.5rem; /* Added margin for spacing */
 }
 
 .socialLink:hover {
@@ -80,7 +94,7 @@
   text-align: center;
   margin-top: 4rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgb(var(--secondary-foreground));
-  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08); /* More subtle border */
+  color: rgba(var(--secondary-foreground), 0.7); /* Lighter copyright text */
+  font-size: 0.85rem; /* Slightly smaller font size */
 }
