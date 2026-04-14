@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     Cookies.set('token', token);
     setIsAuthenticated(true);
     await fetchUser(); // Fetch user data after login
-    router.push('/');
+    router.push('/dashboard');
   };
 
   const logout = () => {

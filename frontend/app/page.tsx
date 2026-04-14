@@ -37,7 +37,7 @@ const Home = () => {
           </div>
         </div>
         <div className="hero-image-right">
-          <img src="images/home.jpeg" alt="AI Productivity" />
+          <img src="images/3.jfif" alt="AI Productivity" />
         </div>
       </section>
 

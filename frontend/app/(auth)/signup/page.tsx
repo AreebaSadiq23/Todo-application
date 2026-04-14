@@ -27,9 +27,12 @@ export default function SignupPage() {
     setLoading(true);
 
     try {
-      await api.post("/auth/register", { username, email, password });
+      console.log("Attempting registration for:", username);
+      const registerResponse = await api.post("/auth/register", { username, email, password });
+      console.log("Registration successful:", registerResponse.data);
 
       // After successful registration, log the user in
+      console.log("Attempting login...");
       const loginResponse = await api.post("/auth/login", new URLSearchParams({
         username: username,
         password: password,
@@ -38,9 +41,14 @@ export default function SignupPage() {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
+      console.log("Login successful:", loginResponse.data);
       login(loginResponse.data.access_token);
     } catch (err: any) {
-      setError(err.response?.data?.detail || "Registration failed");
+      console.error("Registration/Login error:", err);
+      console.error("Error response:", err.response?.data);
+      console.error("Error status:", err.response?.status);
+      const detail = err.response?.data?.detail || err.message || "Registration failed";
+      setError(typeof detail === 'string' ? detail : JSON.stringify(detail));
     } finally {
       setLoading(false);
     }

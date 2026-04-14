@@ -10,7 +10,7 @@
   animation: fadeIn 0.5s ease-out;
 }
 
-/* Error Message Styling */
+/* Error & Success Message Styling */
 .errorMessage {
   background: rgba(239, 68, 68, 0.1);
   backdrop-filter: blur(10px);
@@ -23,6 +23,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  animation: fadeInDown 0.3s ease-out;
+}
+
+.successMessage {
+  background: rgba(34, 197, 94, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  margin: 0 auto 2rem;
+  max-width: 1400px;
+  text-align: center;
+  font-weight: 600;
   animation: fadeInDown 0.3s ease-out;
 }
 
@@ -140,6 +154,136 @@
   background: linear-gradient(135deg, #15803d 0%, #22c55e 100%);
 }
 
+/* Lists Section */
+.listsSection {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid rgba(34, 197, 94, 0.3);
+}
+
+.listsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.listsHeader h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #22c55e;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.createListBtn {
+  background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.createListBtn:hover {
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+}
+
+.createListForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(10, 10, 10, 0.6);
+  border-radius: 12px;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.createListForm input {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 2px solid rgba(34, 197, 94, 0.3);
+  background: rgba(10, 10, 10, 0.6);
+  color: #ffffff;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.createListForm input:focus {
+  outline: none;
+  border-color: rgba(34, 197, 94, 0.6);
+  background: rgba(10, 10, 10, 0.8);
+}
+
+.createListForm input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.createListForm button {
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.createListForm button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+}
+
+.listsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.listItem button:first-child {
+  flex: 1;
+}
+
+.deleteListBtn {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.deleteListBtn:hover {
+  background: rgba(239, 68, 68, 0.3);
+  transform: scale(1.1);
+}
+
 /* Main Content */
 .mainContent {
   flex: 1;
@@ -248,6 +392,53 @@
   box-shadow: 0 8px 25px rgba(34, 197, 94, 0.6);
 }
 
+/* Task Options */
+.taskOptions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.myDayCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.myDayCheckbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #22c55e;
+}
+
+.taskForm select {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 2px solid rgba(34, 197, 94, 0.3);
+  background: rgba(10, 10, 10, 0.6);
+  color: #ffffff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.taskForm select:focus {
+  outline: none;
+  border-color: rgba(34, 197, 94, 0.6);
+  background: rgba(10, 10, 10, 0.8);
+}
+
+.taskForm select option {
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
 /* Task List Section */
 .taskListSection h2 {
   font-size: 2rem;
@@ -352,6 +543,33 @@
   font-size: 1rem;
 }
 
+.taskCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.myDayBadge {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #000000;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.taskListBadge {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* Task Card Actions */
 .taskCardActions {
   display: flex;
@@ -364,10 +582,10 @@
 
 .taskCardActions button {
   flex: 1;
-  min-width: 100px;
-  padding: 0.75rem 1rem;
+  min-width: 80px;
+  padding: 0.75rem 0.75rem;
   border-radius: 10px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -384,6 +602,28 @@
 .completeButton:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5);
+}
+
+.viewButton {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
+}
+
+.viewButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5);
+}
+
+.myDayButton {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #000000;
+  box-shadow: 0 2px 10px rgba(251, 191, 36, 0.3);
+}
+
+.myDayButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.5);
 }
 
 .editButton {
@@ -469,4 +709,140 @@
   .taskCard h3 {
     font-size: 1.15rem;
   }
+
+  .taskCardActions button {
+    flex: none;
+    min-width: auto;
+  }
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modal {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+.modalClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.modalClose:hover {
+  background: rgba(239, 68, 68, 0.3);
+  transform: scale(1.1);
+}
+
+.modal h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modalContent p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.modalContent strong {
+  color: #22c55e;
+  margin-right: 0.5rem;
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.modalActions button {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-align: center;
+}
+
+.modalActions button:first-child {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+}
+
+.modalActions button:first-child:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5);
+}
+
+.modalActions button:nth-child(2) {
+  background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+  color: #ffffff;
+}
+
+.modalActions button:nth-child(2):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5);
+}
+
+.modalDeleteBtn {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  color: #ffffff !important;
+}
+
+.modalDeleteBtn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.5) !important;
 }

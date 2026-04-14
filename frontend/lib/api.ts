@@ -8,9 +8,15 @@ const api = axios.create({
 // Request interceptor to attach JWT token
 api.interceptors.request.use(
   (config) => {
-    const token = Cookies.get('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    // Don't attach token for login and register endpoints only
+    const noTokenEndpoints = ['/auth/login', '/auth/register'];
+    const needsToken = !noTokenEndpoints.some(endpoint => config.url?.startsWith(endpoint));
+
+    if (needsToken) {
+      const token = Cookies.get('token');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
     }
     return config;
   },

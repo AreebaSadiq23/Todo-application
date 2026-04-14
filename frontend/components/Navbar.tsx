@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import styles from './navbar.module.css';
 
 interface User {
@@ -18,6 +19,11 @@ interface NavbarProps {
 
 export default function Navbar({ isAuthenticated, user, logout }: NavbarProps) {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const getInitial = (user: User | null) => {
     if (user?.username) {
@@ -36,22 +42,22 @@ export default function Navbar({ isAuthenticated, user, logout }: NavbarProps) {
       </Link>
       <ul className={styles.navList}>
         <li className={styles.navItem}>
-          <Link href="/" className={`${styles.navLink} ${pathname === "/" ? styles.active : ""}`}>
+          <Link href="/" className={`${styles.navLink} ${mounted && pathname === "/" ? styles.active : ""}`}>
             Home
           </Link>
         </li>
         <li className={styles.navItem}>
-          <Link href="/about" className={`${styles.navLink} ${pathname === "/about" ? styles.active : ""}`}>
+          <Link href="/about" className={`${styles.navLink} ${mounted && pathname === "/about" ? styles.active : ""}`}>
             About
           </Link>
         </li>
         <li className={styles.navItem}>
-          <Link href="/features" className={`${styles.navLink} ${pathname === "/features" ? styles.active : ""}`}>
+          <Link href="/features" className={`${styles.navLink} ${mounted && pathname === "/features" ? styles.active : ""}`}>
             Features
           </Link>
         </li>
         <li className={styles.navItem}>
-          <Link href="/dashboard" className={`${styles.navLink} ${pathname === "/dashboard" ? styles.active : ""}`}>
+          <Link href="/dashboard" className={`${styles.navLink} ${mounted && pathname === "/dashboard" ? styles.active : ""}`}>
             Dashboard
           </Link>
         </li>
