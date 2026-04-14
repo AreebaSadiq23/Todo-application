@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import './Features.css';
 
-const features = [
+// Icon types
+type IconType = 'brain' | 'check' | 'sync' | 'dashboard' | 'layers' | 'lock';
+
+const features: Array<{ icon: IconType; title: string; description: string; color: string }> = [
   {
     icon: "brain",
     title: "Smart Task Management",
@@ -41,8 +44,8 @@ const features = [
 ];
 
 // Icon components
-const IconComponent = ({ type, color }) => {
-  const icons = {
+const IconComponent = ({ type, color }: { type: IconType; color: string }) => {
+  const icons: Record<IconType, React.ReactNode> = {
     brain: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path>
