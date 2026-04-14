@@ -1,36 +1,82 @@
-/* frontend/app/(auth)/auth.module.css */
+/* ========================================
+   PREMIUM AUTH PAGES - DARK GREEN THEME
+   Login & Signup - Modern & Attractive
+   ======================================== */
+
 .authContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  /* Use a subtle gradient or solid color based on the theme from globals.css */
-  background: linear-gradient(135deg, rgb(var(--background-start-rgb)) 0%, rgb(var(--background-end-rgb)) 100%);
-  padding: 1rem;
+  background: linear-gradient(135deg, #0a0a0a 0%, #0a2e1c 50%, #0f3d0f 100%);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated Background Circles */
+.authContainer::before,
+.authContainer::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+.authContainer::before {
+  width: 400px;
+  height: 400px;
+  top: -200px;
+  right: -100px;
+  animation-delay: 0s;
+}
+
+.authContainer::after {
+  width: 300px;
+  height: 300px;
+  bottom: -150px;
+  left: -100px;
+  animation-delay: 3s;
 }
 
 .authCard {
   width: 100%;
-  max-width: 400px;
-  background-color: rgb(var(--card-background));
-  border: 1px solid rgb(var(--card-border));
-  border-radius: 0.75rem; /* Slightly more rounded */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.06); /* Enhanced shadow */
-  padding: 2.5rem 2rem; /* Increased padding */
+  max-width: 450px;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  padding: 3rem 2.5rem;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 .authTitle {
-  font-size: 2.25rem; /* Larger title */
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: rgb(var(--foreground-rgb));
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.authCard > p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+  margin-bottom: 2rem;
 }
 
 .formSpaceY {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   display: grid;
-  gap: 1rem; /* Space between form groups */
+  gap: 1.25rem;
 }
 
 .formGroup {
@@ -42,51 +88,81 @@
   font-weight: 600;
   margin-bottom: 0.5rem;
   display: block;
-  color: rgb(var(--foreground-rgb));
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .input {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid rgb(var(--input-border));
-  background-color: rgb(var(--input-background));
-  color: rgb(var(--foreground-rgb));
+  padding: 0.9rem 1.25rem;
+  border-radius: 12px;
+  border: 2px solid rgba(34, 197, 94, 0.3);
+  background: rgba(10, 10, 10, 0.6);
+  color: #ffffff;
   font-size: 1rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(var(--primary), 0.2);
-}
-
-.input::placeholder {
-  color: rgb(var(--secondary-foreground));
+  border-color: rgba(34, 197, 94, 0.6);
+  background: rgba(10, 10, 10, 0.8);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.2);
 }
 
 .errorText {
-  color: rgb(var(--destructive-foreground));
+  color: #ff6b6b;
   font-size: 0.875rem;
   margin-top: 0.5rem;
+  background: rgba(239, 68, 68, 0.15);
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  animation: fadeInDown 0.3s ease-out;
 }
 
 .submitButton {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  background-color: var(--primary);
-  color: var(--primary-text);
+  padding: 1rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+  color: #ffffff;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
   margin-top: 1.5rem;
+  border: none;
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.submitButton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.submitButton:hover::before {
+  width: 400px;
+  height: 400px;
 }
 
 .submitButton:hover:not(:disabled) {
-  background-color: var(--color-green-700);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(34, 197, 94, 0.5);
 }
 
 .submitButton:disabled {
@@ -94,20 +170,69 @@
   cursor: not-allowed;
 }
 
+.submitButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
 .linkText {
-  font-size: 0.9rem;
-  color: rgb(var(--foreground-rgb));
-  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 2rem;
 }
 
 .link {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.2s ease;
+  color: #22c55e;
+  text-decoration: underline;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.link:hover {
-  text-decoration: underline;
-  color: var(--color-green-700);
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #22c55e;
+  transition: width 0.3s ease;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .authContainer {
+    padding: 1.5rem;
+  }
+
+  .authCard {
+    padding: 2.5rem 2rem;
+  }
+
+  .authTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .authTitle {
+    font-size: 1.75rem;
+  }
+
+  .authCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .input {
+    padding: 0.8rem 1rem;
+  }
+
+  .submitButton {
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
 }

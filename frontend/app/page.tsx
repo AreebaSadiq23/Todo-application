@@ -1,7 +1,22 @@
+"use client";
+
 import React from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/hooks/useAuth';
 import './home.css';
 
 const Home = () => {
+  const router = useRouter();
+  const { isAuthenticated } = useAuth();
+
+  const handleGetStarted = () => {
+    if (isAuthenticated) {
+      router.push('/dashboard');
+    } else {
+      router.push('/signup');
+    }
+  };
+
   return (
     <div className="home-page">
       <section className="hero-section">
@@ -13,7 +28,7 @@ const Home = () => {
           </p>
           <div className="email-signup-section">
             <input type="email" placeholder="Enter your email" className="email-input" />
-            <button className="button-get-started">Get Started</button>
+            <button className="button-get-started" onClick={handleGetStarted}>Get Started</button>
           </div>
 
           <div className="features-highlight">

@@ -4,17 +4,17 @@ import * as React from "react"
 
 const Card = ({ className = "", ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={`rounded-lg border border-gray-200 bg-white shadow-sm ${className}`}
+    className={`rounded-xl border border-green-500/30 bg-black/80 shadow-lg backdrop-blur-xl ${className}`}
     {...props}
   />
 )
 
 const CardHeader = ({ className = "", ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={`border-b px-6 py-4 ${className}`} {...props} />
+  <div className={`border-b border-green-500/20 px-6 py-4 ${className}`} {...props} />
 )
 
 const CardTitle = ({ className = "", ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-  <h3 className={`text-lg font-semibold ${className}`} {...props} />
+  <h3 className={`text-xl font-semibold bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent ${className}`} {...props} />
 )
 
 const CardContent = ({ className = "", ...props }: React.HTMLAttributes<HTMLDivElement>) => (
@@ -22,7 +22,7 @@ const CardContent = ({ className = "", ...props }: React.HTMLAttributes<HTMLDivE
 )
 
 const CardFooter = ({ className = "", ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={`border-t px-6 py-4 ${className}`} {...props} />
+  <div className={`border-t border-green-500/20 px-6 py-4 ${className}`} {...props} />
 )
 
 export {

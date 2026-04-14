@@ -1,89 +1,113 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/hooks/useAuth';
+import api from '@/lib/api';
 import styles from './dashboard.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Define the Task interface for type safety
+// Define the Task interface to match backend API
 interface Task {
   id: number;
   title: string;
   description?: string;
   status: 'pending' | 'completed';
-  dueDate?: string; // Stored as 'YYYY-MM-DD'
-  isMyDay: boolean;
+  due_date?: string;
 }
-
-// Function to get tasks from localStorage
-const getTasksFromLocalStorage = (): Task[] => {
-  if (typeof window !== 'undefined') {
-    const tasks = localStorage.getItem('tasks');
-    return tasks ? JSON.parse(tasks) : [];
-  }
-  return [];
-};
-
-// Function to save tasks to localStorage
-const saveTasksToLocalStorage = (tasks: Task[]) => {
-  if (typeof window !== 'undefined') {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }
-};
 
 const DashboardPage: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [filter, setFilter] = useState<'all' | 'pending' | 'completed' | 'myday'>('all');
+  const [filter, setFilter] = useState<'all' | 'pending' | 'completed'>('all');
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [newTaskDescription, setNewTaskDescription] = useState('');
   const [newTaskDueDate, setNewTaskDueDate] = useState('');
   const [editingTask, setEditingTask] = useState<Task | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const { isAuthenticated } = useAuth();
+  const router = useRouter();
+
+  // Redirect if not authenticated
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/login');
+    }
+  }, [isAuthenticated, router]);
+
+  // Fetch tasks from backend
+  const fetchTasks = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get('/tasks/');
+      setTasks(response.data);
+      setError(null);
+    } catch (err: any) {
+      setError(err.response?.data?.detail || 'Failed to fetch tasks');
+      console.error('Error fetching tasks:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    // Load tasks from localStorage when the component mounts
-    setTasks(getTasksFromLocalStorage());
-  }, []);
-
-  useEffect(() => {
-    // Save tasks to localStorage whenever the tasks state changes
-    saveTasksToLocalStorage(tasks);
-  }, [tasks]);
+    if (isAuthenticated) {
+      fetchTasks();
+    }
+  }, [isAuthenticated]);
 
   // Handle adding a new task
-  const handleAddTask = (e: React.FormEvent) => {
+  const handleAddTask = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newTaskTitle.trim()) return;
 
-    const newTask: Task = {
-      id: Date.now(), // Simple unique ID
-      title: newTaskTitle,
-      description: newTaskDescription.trim() || undefined,
-      status: 'pending',
-      dueDate: newTaskDueDate || undefined,
-      isMyDay: false,
-    };
-    setTasks([...tasks, newTask]);
-    setNewTaskTitle('');
-    setNewTaskDescription('');
-    setNewTaskDueDate('');
+    try {
+      const newTaskData = {
+        title: newTaskTitle,
+        description: newTaskDescription.trim() || undefined,
+        due_date: newTaskDueDate || undefined,
+        status: 'pending',
+      };
+      const response = await api.post('/tasks/', newTaskData);
+      setTasks([...tasks, response.data]);
+      setNewTaskTitle('');
+      setNewTaskDescription('');
+      setNewTaskDueDate('');
+      setError(null);
+    } catch (err: any) {
+      setError(err.response?.data?.detail || 'Failed to create task');
+      console.error('Error creating task:', err);
+    }
   };
 
   // Handle deleting a task
-  const handleDeleteTask = (id: number) => {
-    setTasks(tasks.filter(task => task.id !== id));
+  const handleDeleteTask = async (id: number) => {
+    try {
+      await api.delete(`/tasks/${id}`);
+      setTasks(tasks.filter(task => task.id !== id));
+      setError(null);
+    } catch (err: any) {
+      setError(err.response?.data?.detail || 'Failed to delete task');
+      console.error('Error deleting task:', err);
+    }
   };
 
   // Handle toggling task completion status
-  const handleToggleComplete = (id: number) => {
-    setTasks(tasks.map(task =>
-      task.id === id ? { ...task, status: task.status === 'completed' ? 'pending' : 'completed' } : task
-    ));
-  };
+  const handleToggleComplete = async (id: number) => {
+    const task = tasks.find(t => t.id === id);
+    if (!task) return;
 
-  // Handle toggling "Add to My Day" status
-  const handleToggleMyDay = (id: number) => {
-    setTasks(tasks.map(task =>
-      task.id === id ? { ...task, isMyDay: !task.isMyDay } : task
-    ));
+    const newStatus = task.status === 'completed' ? 'pending' : 'completed';
+
+    try {
+      const response = await api.patch(`/tasks/${id}`, { status: newStatus });
+      setTasks(tasks.map(t => t.id === id ? response.data : t));
+      setError(null);
+    } catch (err: any) {
+      setError(err.response?.data?.detail || 'Failed to update task');
+      console.error('Error updating task:', err);
+    }
   };
 
   // Handle editing a task
@@ -91,28 +115,31 @@ const DashboardPage: React.FC = () => {
     setEditingTask(task);
     setNewTaskTitle(task.title);
     setNewTaskDescription(task.description || '');
-    setNewTaskDueDate(task.dueDate || '');
+    setNewTaskDueDate(task.due_date || '');
   };
 
   // Handle saving an edited task
-  const handleSaveEdit = (e: React.FormEvent) => {
+  const handleSaveEdit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingTask || !newTaskTitle.trim()) return;
 
-    setTasks(tasks.map(task =>
-      task.id === editingTask.id
-        ? {
-            ...task,
-            title: newTaskTitle,
-            description: newTaskDescription.trim() || undefined,
-            dueDate: newTaskDueDate || undefined,
-          }
-        : task
-    ));
-    setEditingTask(null);
-    setNewTaskTitle('');
-    setNewTaskDescription('');
-    setNewTaskDueDate('');
+    try {
+      const updatedTaskData = {
+        title: newTaskTitle,
+        description: newTaskDescription.trim() || undefined,
+        due_date: newTaskDueDate || undefined,
+      };
+      const response = await api.patch(`/tasks/${editingTask.id}`, updatedTaskData);
+      setTasks(tasks.map(task => task.id === editingTask.id ? response.data : task));
+      setEditingTask(null);
+      setNewTaskTitle('');
+      setNewTaskDescription('');
+      setNewTaskDueDate('');
+      setError(null);
+    } catch (err: any) {
+      setError(err.response?.data?.detail || 'Failed to update task');
+      console.error('Error updating task:', err);
+    }
   };
 
   // Handle cancelling edit mode
@@ -127,9 +154,12 @@ const DashboardPage: React.FC = () => {
   const filteredTasks = tasks.filter(task => {
     if (filter === 'pending') return task.status === 'pending';
     if (filter === 'completed') return task.status === 'completed';
-    if (filter === 'myday') return task.isMyDay;
     return true; // 'all' filter
   });
+
+  if (!isAuthenticated) {
+    return null; // Will redirect via useEffect
+  }
 
   return (
     <motion.div
@@ -140,8 +170,15 @@ const DashboardPage: React.FC = () => {
     >
       <header className={styles.header}>
         <h1>My Personal Dashboard</h1>
-        <p>Organize your tasks and boost productivity, saved locally.</p>
+        <p>Organize your tasks and boost productivity.</p>
       </header>
+
+      {error && (
+        <div className={styles.errorMessage}>
+          {error}
+          <button onClick={() => setError(null)} className={styles.closeError}>×</button>
+        </div>
+      )}
 
       <div className={styles.contentWrapper}>
         <aside className={styles.sidebar}>
@@ -149,7 +186,6 @@ const DashboardPage: React.FC = () => {
           <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => setFilter('all')} className={filter === 'all' ? styles.activeFilter : ''}>All Tasks</motion.button>
           <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => setFilter('pending')} className={filter === 'pending' ? styles.activeFilter : ''}>Pending</motion.button>
           <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => setFilter('completed')} className={filter === 'completed' ? styles.activeFilter : ''}>Completed</motion.button>
-          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => setFilter('myday')} className={filter === 'myday' ? styles.activeFilter : ''}>My Day</motion.button>
         </aside>
 
         <main className={styles.mainContent}>
@@ -188,51 +224,52 @@ const DashboardPage: React.FC = () => {
 
           <section className={styles.taskListSection}>
             <h2>{filter.charAt(0).toUpperCase() + filter.slice(1)} Tasks</h2>
-            <div className={styles.taskListGrid}>
-              <AnimatePresence>
-                {filteredTasks.length === 0 ? (
-                  <motion.p
-                    key="no-tasks"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className={styles.noTasksMessage}
-                  >
-                    No {filter} tasks found.
-                  </motion.p>
-                ) : (
-                  filteredTasks.map(task => (
-                    <motion.div
-                      key={task.id}
-                      layout
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.3 }}
-                      className={`${styles.taskCard} ${task.status === 'completed' ? styles.completed : ''} ${task.isMyDay ? styles.myDayTask : ''}`}
+            {loading ? (
+              <p className={styles.noTasksMessage}>Loading tasks...</p>
+            ) : (
+              <div className={styles.taskListGrid}>
+                <AnimatePresence>
+                  {filteredTasks.length === 0 ? (
+                    <motion.p
+                      key="no-tasks"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className={styles.noTasksMessage}
                     >
-                      <h3>{task.title}</h3>
-                      {task.description && <p className={styles.taskDescription}>{task.description}</p>}
-                      {task.dueDate && <p className={styles.taskDueDate}>Due: {task.dueDate}</p>}
-                      <div className={styles.taskCardActions}>
-                        <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => handleToggleComplete(task.id)} className={styles.completeButton}>
-                          {task.status === 'completed' ? 'Uncomplete' : 'Complete'}
-                        </motion.button>
-                        <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => handleToggleMyDay(task.id)} className={styles.myDayButton}>
-                          {task.isMyDay ? 'Remove from My Day' : 'Add to My Day'}
-                        </motion.button>
-                        <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => handleEditTask(task)} className={styles.editButton}>
-                          Edit
-                        </motion.button>
-                        <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => handleDeleteTask(task.id)} className={styles.deleteButton}>
-                          Delete
-                        </motion.button>
-                      </div>
-                    </motion.div>
-                  ))
-                )}
-              </AnimatePresence>
-            </div>
+                      No {filter} tasks found.
+                    </motion.p>
+                  ) : (
+                    filteredTasks.map(task => (
+                      <motion.div
+                        key={task.id}
+                        layout
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                        className={`${styles.taskCard} ${task.status === 'completed' ? styles.completed : ''}`}
+                      >
+                        <h3>{task.title}</h3>
+                        {task.description && <p className={styles.taskDescription}>{task.description}</p>}
+                        {task.due_date && <p className={styles.taskDueDate}>Due: {task.due_date}</p>}
+                        <div className={styles.taskCardActions}>
+                          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => handleToggleComplete(task.id)} className={styles.completeButton}>
+                            {task.status === 'completed' ? 'Uncomplete' : 'Complete'}
+                          </motion.button>
+                          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => handleEditTask(task)} className={styles.editButton}>
+                            Edit
+                          </motion.button>
+                          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => handleDeleteTask(task.id)} className={styles.deleteButton}>
+                            Delete
+                          </motion.button>
+                        </div>
+                      </motion.div>
+                    ))
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
           </section>
         </main>
       </div>
