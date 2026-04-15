@@ -294,10 +294,12 @@ section {
     flex-direction: column;
     text-align: center;
     padding: 4rem 2rem;
+    gap: 3rem;
   }
 
   .hero-content-left {
     text-align: center;
+    max-width: 100%;
   }
 
   .hero-content-left h1 {
@@ -315,12 +317,17 @@ section {
   .features-highlight {
     justify-content: center;
   }
+
+  .hero-image-right img {
+    max-width: 80%;
+  }
 }
 
 @media (max-width: 768px) {
   .hero-section {
     padding: 3rem 1.5rem;
     min-height: auto;
+    gap: 2.5rem;
   }
 
   .hero-content-left h1 {
@@ -331,12 +338,28 @@ section {
     font-size: 1.1rem;
   }
 
+  .email-signup-section {
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
   .email-input {
     width: 100%;
+    min-width: auto;
   }
 
   .button-get-started {
     width: 100%;
+  }
+
+  .features-highlight {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .feature-item-highlight {
+    font-size: 0.95rem;
   }
 
   .info-section {
@@ -347,21 +370,62 @@ section {
     font-size: 2rem;
   }
 
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
   .info-card {
     padding: 2rem;
+  }
+
+  .hero-image-right img {
+    max-width: 100%;
   }
 }
 
 @media (max-width: 480px) {
+  .hero-section {
+    padding: 2.5rem 1rem;
+    gap: 2rem;
+  }
+
   .hero-content-left h1 {
     font-size: 1.75rem;
   }
 
+  .hero-content-left p {
+    font-size: 1rem;
+  }
+
+  .feature-item-highlight {
+    font-size: 0.875rem;
+  }
+
+  .tick-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.75rem;
+  }
+
+  .info-section {
+    padding: 3rem 1rem;
+  }
+
   .info-section h2 {
     font-size: 1.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .info-card {
+    padding: 1.5rem;
   }
 
   .info-card h3 {
     font-size: 1.25rem;
+  }
+
+  .info-card p {
+    font-size: 0.95rem;
   }
 }

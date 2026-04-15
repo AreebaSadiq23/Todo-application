@@ -1,0 +1,110 @@
+.notFoundPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a0a0a 0%, #0a2e1c 50%, #0f3d0f 100%);
+  padding: 2rem;
+}
+
+.notFoundCard {
+  text-align: center;
+  padding: 3rem 2.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  max-width: 28rem;
+  width: 100%;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.statusCode {
+  font-size: 5rem;
+  font-weight: 800;
+  background: linear-gradient(to right, #22c55e, #16a34a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.homeButton {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(to right, #22c55e, #15803d);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.homeButton:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .notFoundPage {
+    padding: 1.5rem;
+  }
+
+  .notFoundCard {
+    padding: 2.5rem 2rem;
+  }
+
+  .statusCode {
+    font-size: 4rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .notFoundCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .statusCode {
+    font-size: 3rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .homeButton {
+    width: 100%;
+  }
+}

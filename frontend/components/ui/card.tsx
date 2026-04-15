@@ -1,28 +1,29 @@
 "use client"
 
 import * as React from "react"
+import styles from './card.module.css'
 
 const Card = ({ className = "", ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={`rounded-xl border border-green-500/30 bg-black/80 shadow-lg backdrop-blur-xl ${className}`}
+    className={`${styles.card} ${className}`}
     {...props}
   />
 )
 
 const CardHeader = ({ className = "", ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={`border-b border-green-500/20 px-6 py-4 ${className}`} {...props} />
+  <div className={`${styles.cardHeader} ${className}`} {...props} />
 )
 
 const CardTitle = ({ className = "", ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-  <h3 className={`text-xl font-semibold bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent ${className}`} {...props} />
+  <h3 className={`${styles.cardTitle} ${className}`} {...props} />
 )
 
 const CardContent = ({ className = "", ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={`px-6 py-4 ${className}`} {...props} />
+  <div className={`${styles.cardContent} ${className}`} {...props} />
 )
 
 const CardFooter = ({ className = "", ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={`border-t border-green-500/20 px-6 py-4 ${className}`} {...props} />
+  <div className={`${styles.cardFooter} ${className}`} {...props} />
 )
 
 export {

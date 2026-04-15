@@ -1,0 +1,29 @@
+.input {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(34, 197, 94, 0.3);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  color: #ffffff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgba(34, 197, 94, 0.6);
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+}
+
+@media (max-width: 768px) {
+  .input {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
