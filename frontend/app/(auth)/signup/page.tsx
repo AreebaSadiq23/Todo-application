@@ -99,8 +99,8 @@ export default function SignupPage() {
               />
             </div>
             {error && <p className={styles.errorText}>{error}</p>}
-            <Button type="submit" className={styles.submitButton} disabled={loading}>
-              {loading ? "Signing up..." : "Sign Up"}
+            <Button type="submit" variant="primary" className={styles.submitButton} disabled={loading}>
+              {loading ? "Signing up..." : "Sign up"}
             </Button>
           </form>
         </CardContent>
