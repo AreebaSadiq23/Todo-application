@@ -42,7 +42,7 @@ const Home = () => {
       </section>
 
       <section className="info-section">
-        <h2>Why Choose Our AI-Powered Todo App?</h2>
+        <h2>Why Choose Our Todo App?</h2>
         <div className="info-grid">
           <div className="info-card">
             <h3>Intelligent Prioritization</h3>
