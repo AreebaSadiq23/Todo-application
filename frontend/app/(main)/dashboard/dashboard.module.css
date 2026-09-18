@@ -10,7 +10,50 @@
   animation: fadeIn 0.5s ease-out;
 }
 
-/* ... existing styles preserved, focusing on taskCard/taskCardActions ... */
+/* Error & Success Messages */
+.errorMessage, .successMessage {
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  margin: 0 auto 2rem;
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+}
+
+.errorMessage {
+  background: rgba(229, 115, 115, 0.1);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.successMessage {
+  background: rgba(107, 191, 138, 0.1);
+  color: var(--success);
+  border: 1px solid var(--success);
+}
+
+.closeError {
+  background: none;
+  border: none;
+  color: var(--danger);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Loading/Empty State */
+.noTasksMessage {
+  text-align: center;
+  padding: 3rem;
+  color: var(--gray-600);
+  font-size: 1.1rem;
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--gray-300);
+}
+
+/* ... existing taskCard and other styles preserved ... */
 
 .taskCard {
   background: var(--gray-50);
@@ -58,5 +101,3 @@
   padding-top: 1rem;
   border-top: 1px solid var(--gray-200);
 }
-
-/* ... rest of the file ... */
