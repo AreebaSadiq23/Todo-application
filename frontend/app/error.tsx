@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import styles from './error.module.css';
 
 export default function GlobalError({
@@ -25,16 +26,10 @@ export default function GlobalError({
             </h2>
             <p className={styles.errorMessage}>Something went wrong</p>
             <div className={styles.buttonGroup}>
-              <button
-                onClick={() => reset()}
-                className={styles.retryButton}
-              >
+              <Button onClick={() => reset()} variant="primary">
                 Try Again
-              </button>
-              <Link
-                href="/"
-                className={styles.homeButton}
-              >
+              </Button>
+              <Link href="/" className={styles.homeButton}>
                 Go Home
               </Link>
             </div>
