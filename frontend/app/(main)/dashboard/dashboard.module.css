@@ -6,7 +6,7 @@
 .dashboardPage {
   min-height: 100vh;
   background: var(--background-gradient);
-  padding: 2rem;
+  padding: 1.5rem;
   animation: fadeIn 0.5s ease-out;
 }
 
@@ -14,7 +14,7 @@
 .errorMessage, .successMessage {
   padding: 1rem 1.5rem;
   border-radius: var(--radius-md);
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.5rem;
   max-width: 1400px;
   display: flex;
   justify-content: space-between;
@@ -42,34 +42,33 @@
   cursor: pointer;
 }
 
-/* Loading/Empty State */
-.noTasksMessage {
-  text-align: center;
-  padding: 3rem;
-  color: var(--gray-600);
-  font-size: 1.1rem;
-  background: var(--gray-50);
-  border-radius: var(--radius-lg);
-  border: 1px dashed var(--gray-300);
+/* Content Wrapper */
+.contentWrapper {
+  display: flex;
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-/* ... existing taskCard and other styles preserved ... */
-
-.taskCard {
+/* Sidebar */
+.sidebar {
+  flex: 0 0 240px;
   background: var(--gray-50);
   padding: 1.5rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--gray-200);
-  box-shadow: var(--shadow-sm);
+  height: fit-content;
+}
+
+/* Task Cards */
+.taskCard {
+  background: var(--gray-50);
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
   transition: all var(--transition-base);
   display: flex;
   flex-direction: column;
-}
-
-.taskCard:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--primary);
 }
 
 .taskCard.completed {
@@ -78,26 +77,27 @@
 }
 
 .taskCard h3 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--gray-900);
   margin-bottom: 0.5rem;
+  word-wrap: break-word;
 }
 
-.taskCard.completed h3 {
-  text-decoration: line-through;
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .contentWrapper {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    flex: none;
+    width: 100%;
+  }
 }
 
-.taskDescription {
-  font-size: 0.9rem;
-  color: var(--gray-600);
-  margin-bottom: 1rem;
-}
-
-.taskCardActions {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px solid var(--gray-200);
+@media (max-width: 768px) {
+  .dashboardPage {
+    padding: 1rem;
+  }
 }
