@@ -411,6 +411,7 @@ const DashboardPage: React.FC = () => {
             <h2>{editingTask ? '✏️ Edit Task' : '➕ Add New Task'}</h2>
             <form onSubmit={editingTask ? handleSaveEdit : handleAddTask} className={styles.taskForm}>
               <input
+                className={styles.taskFormInput}
                 type="text"
                 placeholder="Task Title"
                 value={newTaskTitle}
@@ -418,18 +419,20 @@ const DashboardPage: React.FC = () => {
                 required
               />
               <textarea
+                className={styles.taskFormTextarea}
                 placeholder="Description (optional)"
                 value={newTaskDescription}
                 onChange={(e) => setNewTaskDescription(e.target.value)}
               ></textarea>
               <input
+                className={styles.taskFormInput}
                 type="date"
                 value={newTaskDueDate}
                 onChange={(e) => setNewTaskDueDate(e.target.value)}
               />
               
-              <div className={styles.taskOptions}>
-                <label className={styles.myDayCheckbox}>
+              <div className={styles.taskOptionsRow}>
+                <label className={styles.myDayCheckboxContainer}>
                   <input
                     type="checkbox"
                     checked={newTaskMyDay}
@@ -439,6 +442,7 @@ const DashboardPage: React.FC = () => {
                 </label>
 
                 <select
+                  className={styles.taskFormSelect}
                   value={newTaskListId || ''}
                   onChange={(e) => setNewTaskListId(e.target.value ? Number(e.target.value) : undefined)}
                 >
@@ -449,14 +453,14 @@ const DashboardPage: React.FC = () => {
                 </select>
               </div>
 
-              <div className={styles.formActions}>
+              <div className={styles.formActionsContainer}>
                 {editingTask && (
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     type="button"
                     onClick={cancelEdit}
-                    className={styles.cancelButton}
+                    className={`${styles.actionButton} ${styles.cancelAction}`}
                   >
                     Cancel
                   </motion.button>
@@ -465,7 +469,7 @@ const DashboardPage: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   type="submit"
-                  className={styles.submitButton}
+                  className={`${styles.actionButton} ${styles.submitAction}`}
                 >
                   {editingTask ? '💾 Save Changes' : '➕ Add Task'}
                 </motion.button>
