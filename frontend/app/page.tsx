@@ -20,16 +20,26 @@ const Home = () => {
   return (
     <div className="home-page">
       <section className="hero-section">
-        <h1 className="hero-title">Master Your Daily Productivity</h1>
-        <p className="hero-subtitle">
-          The professional Todo application designed for clarity, focus, and getting things done.
-        </p>
-        <button className="button-get-started" onClick={handleGetStarted}>
-          Get Started
-        </button>
-        <div className="hero-visual">
-          {/* Subtle productivity visual placeholder */}
-          <div className="visual-placeholder">✓</div>
+        <div className="hero-content">
+          <div className="hero-text">
+            <h1 className="hero-title">Master Your Daily Productivity</h1>
+            <p className="hero-subtitle">
+              The professional Todo application designed for clarity, focus, and getting things done.
+            </p>
+            <button className="button-get-started" onClick={handleGetStarted}>
+              Get Started
+            </button>
+          </div>
+          <div className="hero-visual">
+            <div className="workflow-animation">
+              {/* Animated Todo workflow visual */}
+              <div className="animation-box">
+                <div className="task-item"></div>
+                <div className="task-item"></div>
+                <div className="task-item"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -51,11 +61,13 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="cta-section">
-        <h2>Ready to get organized?</h2>
-        <button className="button-cta" onClick={handleGetStarted}>
-          Launch My Dashboard
-        </button>
+      <section className="newsletter-section">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for productivity tips and updates.</p>
+        <form className="newsletter-form">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
       </section>
     </div>
   );
