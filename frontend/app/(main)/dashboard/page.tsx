@@ -357,7 +357,7 @@ const DashboardPage: React.FC = () => {
             <div className={styles.listsHeader}>
               <h3>My Lists</h3>
               <button
-                className={styles.createListBtn}
+                className={styles.createListToggleBtn}
                 onClick={() => setShowCreateList(!showCreateList)}
               >
                 {showCreateList ? '×' : '+'}
@@ -367,6 +367,7 @@ const DashboardPage: React.FC = () => {
             {showCreateList && (
               <form onSubmit={handleCreateList} className={styles.createListForm}>
                 <input
+                  className={styles.listInput}
                   type="text"
                   placeholder="List name"
                   value={newListName}
@@ -374,12 +375,13 @@ const DashboardPage: React.FC = () => {
                   required
                 />
                 <input
+                  className={styles.listInput}
                   type="text"
                   placeholder="Description (optional)"
                   value={newListDescription}
                   onChange={(e) => setNewListDescription(e.target.value)}
                 />
-                <button type="submit">Create</button>
+                <button type="submit" className={styles.createListSubmitBtn}>Create</button>
               </form>
             )}
 
