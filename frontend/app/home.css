@@ -56,67 +56,54 @@
   box-shadow: var(--shadow-lg);
 }
 
-.workflow-animation {
-  background: white;
-  padding: 3rem;
-  border-radius: var(--radius-2xl);
-  border: 1px solid var(--gray-200);
-  box-shadow: var(--shadow-xl);
-  width: 100%;
-  min-height: 250px;
+/* Static Circular Workflow */
+.circular-layout {
   position: relative;
-}
-
-.animation-box {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding-left: 2rem;
-  position: relative;
-}
-
-.animation-line {
-  position: absolute;
-  left: 22px;
-  top: 10px;
-  bottom: 10px;
-  width: 3px;
-  background: var(--gray-200);
-  border-radius: var(--radius-full);
-}
-
-.animation-dot {
-  position: absolute;
-  left: 17px;
-  width: 13px;
-  height: 13px;
-  background: var(--primary);
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  border: 2px dashed var(--primary-light);
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--primary);
-  animation: moveDot 3s infinite ease-in-out;
-}
-
-@keyframes moveDot {
-  0%, 100% { top: 15px; }
-  50% { top: 180px; }
-}
-
-.task-item {
-  height: 50px;
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-lg);
-  width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding-left: 2rem;
-  font-weight: 600;
-  color: var(--primary-dark);
 }
 
-.task-item span {
-  font-size: 1rem;
+.circle-node {
+  position: absolute;
+  padding: 0.8rem 1.5rem;
+  background: white;
+  border: 2px solid var(--primary-light);
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  color: var(--primary-dark);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
 }
+
+.center-node {
+  position: absolute;
+  padding: 1rem;
+  background: var(--primary-dark);
+  color: white;
+  border: 2px solid white;
+  font-weight: 800;
+  font-size: 1.2rem;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/* Positioning labels in a circle */
+.create { top: -20px; left: 50%; transform: translateX(-50%); }
+.add { top: 20%; right: -20px; }
+.edit { bottom: 20%; right: -20px; }
+.update { bottom: -20px; left: 50%; transform: translateX(-50%); }
+.view { bottom: 20%; left: -20px; }
+.delete { top: 20%; left: -20px; }
+
 
 .features-section {
   padding: 6rem 2rem;

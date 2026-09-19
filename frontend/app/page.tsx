@@ -31,15 +31,14 @@ const Home = () => {
             </button>
           </div>
           <div className="hero-visual">
-            <div className="workflow-animation">
-              {/* Animated Todo workflow visual */}
-              <div className="animation-box">
-                <div className="animation-line"></div>
-                <div className="animation-dot"></div>
-                <div className="task-item"><span>Add Task</span></div>
-                <div className="task-item"><span>Edit Task</span></div>
-                <div className="task-item"><span>Delete Task</span></div>
-              </div>
+            <div className="circular-layout">
+              <div className="circle-node center-node">CRUD</div>
+              <div className="circle-node create">Create</div>
+              <div className="circle-node add">Add</div>
+              <div className="circle-node edit">Edit</div>
+              <div className="circle-node update">Update</div>
+              <div className="circle-node view">View</div>
+              <div className="circle-node delete">Delete</div>
             </div>
           </div>
         </div>
