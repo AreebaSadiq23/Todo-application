@@ -280,6 +280,11 @@ const DashboardPage: React.FC = () => {
     return filter.charAt(0).toUpperCase() + filter.slice(1) + ' Tasks';
   };
 
+  const isOverdue = (dueDate?: string) => {
+    if (!dueDate) return false;
+    return new Date(dueDate) < new Date(new Date().setHours(0,0,0,0));
+  };
+
   if (!isAuthenticated) {
     return null;
   }
@@ -526,8 +531,15 @@ const DashboardPage: React.FC = () => {
                         </div>
                         
                         {task.description && <p className={styles.taskDescription}>{task.description}</p>}
-                        {task.due_date && <p className={styles.taskDueDate}>📅 Due: {task.due_date}</p>}
-                        {task.list_name && <p className={styles.taskListBadge}>📁 {task.list_name}</p>}
+                        
+                        <div className={styles.taskMeta}>
+                          {task.due_date && (
+                            <span className={`${styles.taskDueDate} ${isOverdue(task.due_date) ? styles.overdue : ''}`}>
+                              📅 {new Date(task.due_date).toLocaleDateString()}
+                            </span>
+                          )}
+                          {task.list_name && <span className={styles.taskListBadge}>📁 {task.list_name}</span>}
+                        </div>
                         
                         <div className={styles.taskCardActions}>
                           <motion.button
