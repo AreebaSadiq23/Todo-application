@@ -42,6 +42,7 @@ const DashboardPage: React.FC = () => {
   const [newTaskDueDate, setNewTaskDueDate] = useState('');
   const [newTaskMyDay, setNewTaskMyDay] = useState(false);
   const [newTaskListId, setNewTaskListId] = useState<number | undefined>(undefined);
+  const [newTaskPriority, setNewTaskPriority] = useState<'low' | 'medium' | 'high'>('medium');
   
   // Edit states
   const [editingTask, setEditingTask] = useState<Task | null>(null);
@@ -110,6 +111,7 @@ const DashboardPage: React.FC = () => {
         due_date: newTaskDueDate || undefined,
         my_day: newTaskMyDay,
         list_id: newTaskListId,
+        priority: newTaskPriority,
         status: 'pending',
       };
       const response = await api.post('/tasks/', newTaskData);
@@ -189,6 +191,7 @@ const DashboardPage: React.FC = () => {
         due_date: newTaskDueDate || undefined,
         my_day: newTaskMyDay,
         list_id: newTaskListId,
+        priority: newTaskPriority,
       };
       const response = await api.patch(`/tasks/${editingTask.id}`, updatedTaskData);
       setTasks(tasks.map(task => task.id === editingTask.id ? response.data : task));
@@ -442,6 +445,16 @@ const DashboardPage: React.FC = () => {
                   />
                   <span>Add to My Day</span>
                 </label>
+
+                <select
+                  className={styles.taskFormSelect}
+                  value={newTaskPriority}
+                  onChange={(e) => setNewTaskPriority(e.target.value as 'low' | 'medium' | 'high')}
+                >
+                  <option value="low">Low Priority</option>
+                  <option value="medium">Medium Priority</option>
+                  <option value="high">High Priority</option>
+                </select>
 
                 <select
                   className={styles.taskFormSelect}
