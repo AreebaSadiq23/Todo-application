@@ -43,6 +43,18 @@ const DashboardPage: React.FC = () => {
   const [newTaskMyDay, setNewTaskMyDay] = useState(false);
   const [newTaskListId, setNewTaskListId] = useState<number | undefined>(undefined);
   const [newTaskPriority, setNewTaskPriority] = useState<'low' | 'medium' | 'high'>('medium');
+  const [newTaskCategory, setNewTaskCategory] = useState('');
+
+  // ... (inside handleAddTask and handleSaveEdit, add newTaskCategory to the payload)
+
+  // In the JSX form:
+              <input
+                className={styles.taskFormInput}
+                type="text"
+                placeholder="Category (e.g. Work, Personal)"
+                value={newTaskCategory}
+                onChange={(e) => setNewTaskCategory(e.target.value)}
+              />
   
   // Edit states
   const [editingTask, setEditingTask] = useState<Task | null>(null);
@@ -112,6 +124,7 @@ const DashboardPage: React.FC = () => {
         my_day: newTaskMyDay,
         list_id: newTaskListId,
         priority: newTaskPriority,
+        category: newTaskCategory.trim() || undefined,
         status: 'pending',
       };
       const response = await api.post('/tasks/', newTaskData);
@@ -192,6 +205,7 @@ const DashboardPage: React.FC = () => {
         my_day: newTaskMyDay,
         list_id: newTaskListId,
         priority: newTaskPriority,
+        category: newTaskCategory.trim() || undefined,
       };
       const response = await api.patch(`/tasks/${editingTask.id}`, updatedTaskData);
       setTasks(tasks.map(task => task.id === editingTask.id ? response.data : task));
@@ -533,6 +547,7 @@ const DashboardPage: React.FC = () => {
                         {task.description && <p className={styles.taskDescription}>{task.description}</p>}
                         
                         <div className={styles.taskMeta}>
+                          {task.category && <span className={styles.categoryBadge}>{task.category}</span>}
                           {task.due_date && (
                             <span className={`${styles.taskDueDate} ${isOverdue(task.due_date) ? styles.overdue : ''}`}>
                               📅 {new Date(task.due_date).toLocaleDateString()}
