@@ -1,103 +1,133 @@
 /* ========================================
-   PREMIUM DASHBOARD - LIGHT ELEGANT THEME
-   Modern, Professional & User-Friendly
+   DASHBOARD - PREMIUM LIGHT SAGE DESIGN
+   Modern, Attractive & Professional
    ======================================== */
 
 .dashboardPage {
   min-height: 100vh;
   background: var(--background-gradient);
-  padding: 1.5rem;
-  animation: fadeIn 0.5s ease-out;
+  padding: 2rem;
 }
 
-/* Error & Success Messages */
-.errorMessage, .successMessage {
-  padding: 1rem 1.5rem;
-  border-radius: var(--radius-md);
-  margin: 0 auto 1.5rem;
-  max-width: 1400px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 500;
+.header {
+  margin-bottom: 3rem;
+  text-align: center;
+  animation: fadeInUp 0.6s ease-out;
 }
 
-.errorMessage {
-  background: rgba(229, 115, 115, 0.1);
-  color: var(--danger);
-  border: 1px solid var(--danger);
+.header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
 }
 
-.successMessage {
-  background: rgba(107, 191, 138, 0.1);
-  color: var(--success);
-  border: 1px solid var(--success);
+.header p {
+  color: var(--gray-600);
+  font-size: 1.1rem;
 }
 
-.closeError {
-  background: none;
-  border: none;
-  color: var(--danger);
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* Content Wrapper */
 .contentWrapper {
-  display: flex;
-  gap: 1.5rem;
-  max-width: 1400px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Sidebar */
 .sidebar {
-  flex: 0 0 240px;
-  background: var(--gray-50);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
   padding: 1.5rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
   height: fit-content;
 }
 
-/* Task Cards */
+.sidebar h2 {
+  font-size: 1rem;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  margin-bottom: 0.5rem;
+  background: transparent;
+  color: var(--gray-800);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-weight: 500;
+}
+
+.sidebar button:hover, .sidebar button.activeFilter {
+  background: var(--gray-100);
+  border-color: var(--glass-border);
+  color: var(--primary-dark);
+}
+
 .taskCard {
-  background: var(--gray-50);
-  padding: 1.25rem;
+  background: white;
+  padding: 1.5rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--gray-200);
   transition: all var(--transition-base);
-  display: flex;
-  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+}
+
+.taskCard:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
 }
 
 .taskCard.completed {
-  opacity: 0.6;
-  background: var(--gray-100);
+  background: var(--gray-50);
+  opacity: 0.8;
 }
 
 .taskCard h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--gray-900);
+  font-size: 1.2rem;
+  color: var(--primary-text);
   margin-bottom: 0.5rem;
-  word-wrap: break-word;
 }
 
-/* Responsive Design */
+.taskCard.completed h3 {
+  text-decoration: line-through;
+  color: var(--gray-500);
+}
+
+.taskDescription {
+  color: var(--gray-600);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 1024px) {
   .contentWrapper {
-    flex-direction: column;
-  }
-  
-  .sidebar {
-    flex: none;
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .dashboardPage {
-    padding: 1rem;
+    grid-template-columns: 1fr;
   }
 }
