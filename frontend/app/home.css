@@ -56,66 +56,64 @@
   box-shadow: var(--shadow-lg);
 }
 
-.workflow-animation {
-  background: white;
-  padding: 3rem;
-  border-radius: var(--radius-2xl);
-  border: 1px solid var(--gray-200);
-  box-shadow: var(--shadow-xl);
-  width: 100%;
-  min-height: 250px;
-  position: relative;
-}
-
-.animation-box {
+/* Circular Workflow Animation */
+.circular-workflow {
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding-left: 2rem;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+
+.circle-track {
+  width: 250px;
+  height: 250px;
+  border: 3px dashed var(--primary-light);
+  border-radius: 50%;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.animation-line {
-  position: absolute;
-  left: 22px;
-  top: 10px;
-  bottom: 10px;
-  width: 3px;
-  background: var(--gray-200);
-  border-radius: var(--radius-full);
+.circle-animation {
+  width: 220px;
+  height: 220px;
+  position: relative;
+  animation: rotateCircle 15s linear infinite;
 }
 
-.animation-dot {
+.workflow-dot {
   position: absolute;
-  left: 17px;
-  width: 13px;
-  height: 13px;
+  top: -10px;
+  left: 50%;
+  width: 20px;
+  height: 20px;
   background: var(--primary);
   border-radius: 50%;
-  box-shadow: 0 0 10px var(--primary);
-  animation: moveDot 3s infinite ease-in-out;
+  box-shadow: 0 0 15px var(--primary);
 }
 
-@keyframes moveDot {
-  0%, 100% { top: 15px; }
-  50% { top: 180px; }
-}
-
-.task-item {
-  height: 50px;
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-lg);
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding-left: 2rem;
+.label {
+  position: absolute;
   font-weight: 600;
   color: var(--primary-dark);
+  background: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  box-shadow: var(--shadow-sm);
 }
 
-.task-item span {
-  font-size: 1rem;
+.create { top: 0; left: 50%; transform: translate(-50%, -50%); }
+.add { top: 50%; right: -20px; transform: translate(0, -50%); }
+.edit { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
+.delete { top: 50%; left: -20px; transform: translate(0, -50%); }
+.update { top: 20%; right: 10%; transform: translate(50%, -50%); }
+.view { bottom: 20%; right: 10%; transform: translate(50%, 50%); }
+
+@keyframes rotateCircle {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .features-section {
