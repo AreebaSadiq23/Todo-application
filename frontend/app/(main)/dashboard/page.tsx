@@ -246,13 +246,25 @@ const DashboardPage: React.FC = () => {
     }
   };
 
-  // Filter tasks
+  // Search and filter states
+  const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState<'all' | 'pending' | 'completed'>('all');
+  
+  // Update filteredTasks logic
   const filteredTasks = tasks.filter(task => {
-    if (filter === 'my_day') return task.my_day;
-    if (filter === 'list' && selectedListId) return task.list_id === selectedListId;
-    if (filter === 'pending') return task.status === 'pending';
-    if (filter === 'completed') return task.status === 'completed';
-    return true;
+    const matchesSearch = task.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesStatus = statusFilter === 'all' 
+      ? true 
+      : statusFilter === 'pending' 
+        ? task.status === 'pending' 
+        : task.status === 'completed';
+    
+    // Original filters
+    let matchesOther = true;
+    if (filter === 'my_day') matchesOther = task.my_day;
+    if (filter === 'list' && selectedListId) matchesOther = task.list_id === selectedListId;
+    
+    return matchesSearch && matchesStatus && matchesOther;
   });
 
   // Get filter title
@@ -298,14 +310,21 @@ const DashboardPage: React.FC = () => {
         <aside className={styles.sidebar}>
           <h2>Navigation</h2>
           
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => { setFilter('all'); setSelectedListId(null); }}
-            className={filter === 'all' ? styles.activeFilter : ''}
-          >
-            📋 All Tasks
-          </motion.button>
+          {/* Search and Filters */}
+          <div className={styles.controls}>
+            <input 
+              type="text" 
+              placeholder="Search tasks..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className={styles.searchInput}
+            />
+            <div className={styles.filterButtons}>
+              <button className={statusFilter === 'all' ? styles.activeFilter : ''} onClick={() => setStatusFilter('all')}>All</button>
+              <button className={statusFilter === 'pending' ? styles.activeFilter : ''} onClick={() => setStatusFilter('pending')}>Active</button>
+              <button className={statusFilter === 'completed' ? styles.activeFilter : ''} onClick={() => setStatusFilter('completed')}>Done</button>
+            </div>
+          </div>
           
           <motion.button
             whileHover={{ scale: 1.05 }}
