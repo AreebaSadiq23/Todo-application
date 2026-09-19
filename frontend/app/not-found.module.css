@@ -1,20 +1,25 @@
+/* ========================================
+   NOT FOUND PAGE - PREMIUM LIGHT SAGE DESIGN
+   Modern, Attractive & Professional
+   ======================================== */
+
 .notFoundPage {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #0a0a0a 0%, #0a2e1c 50%, #0f3d0f 100%);
+  background: var(--background-gradient);
   padding: 2rem;
 }
 
 .notFoundCard {
   text-align: center;
   padding: 3rem 2.5rem;
-  border-radius: 1.5rem;
-  border: 1px solid rgba(34, 197, 94, 0.3);
-  background: rgba(0, 0, 0, 0.8);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  box-shadow: var(--shadow-xl);
   max-width: 28rem;
   width: 100%;
   animation: fadeInUp 0.5s ease-out;
@@ -23,7 +28,7 @@
 .statusCode {
   font-size: 5rem;
   font-weight: 800;
-  background: linear-gradient(to right, #22c55e, #16a34a);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -34,12 +39,12 @@
 .title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--primary-text);
   margin-bottom: 0.75rem;
 }
 
 .description {
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--gray-600);
   margin-bottom: 2rem;
   font-size: 1rem;
 }
@@ -47,18 +52,18 @@
 .homeButton {
   display: inline-block;
   padding: 0.75rem 2rem;
-  border-radius: 0.75rem;
-  background: linear-gradient(to right, #22c55e, #15803d);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: #ffffff;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 15px -3px rgba(90, 143, 125, 0.2);
 }
 
 .homeButton:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 25px -5px rgba(90, 143, 125, 0.3);
   transform: translateY(-2px);
 }
 
