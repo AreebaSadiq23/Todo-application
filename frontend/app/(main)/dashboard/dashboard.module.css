@@ -6,23 +6,21 @@
 .dashboardPage {
   min-height: 100vh;
   background: var(--background-gradient);
-  padding: 2rem;
+  padding: 3rem 2rem;
 }
 
 .header {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   text-align: center;
   animation: fadeInUp 0.6s ease-out;
 }
 
 .header h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--primary-dark);
   margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 .header p {
@@ -32,19 +30,18 @@
 
 .contentWrapper {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 2rem;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .sidebar {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  padding: 1.5rem;
+  background: white;
+  padding: 2rem;
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
   height: fit-content;
 }
 
@@ -54,34 +51,38 @@
 
 .searchInput {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-md);
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--gray-200);
-  background: white;
-  transition: border-color var(--transition-fast);
+  background: var(--gray-50);
+  transition: all var(--transition-base);
+  font-size: 0.95rem;
 }
 
 .searchInput:focus {
   outline: none;
   border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(90, 143, 125, 0.1);
 }
 
 .filterButtons {
   display: flex;
   gap: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .filterButtons button {
   flex: 1;
-  padding: 0.5rem;
-  font-size: 0.85rem;
-  background: white;
+  padding: 0.6rem;
+  font-size: 0.8rem;
+  background: var(--gray-50);
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-md);
   color: var(--gray-700);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
+  font-weight: 600;
 }
 
 .filterButtons button.activeFilter {
@@ -90,51 +91,161 @@
   border-color: var(--primary);
 }
 
+.sidebar h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray-500);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
 .sidebar button {
   display: block;
   width: 100%;
-  padding: 0.875rem 1rem;
-  margin-bottom: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.25rem;
   background: transparent;
   color: var(--gray-800);
   border: 1px solid transparent;
   border-radius: var(--radius-md);
   text-align: left;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
   font-weight: 500;
+  font-size: 0.95rem;
 }
 
 .sidebar button:hover, .sidebar button.activeFilter {
   background: var(--gray-100);
-  border-color: var(--glass-border);
   color: var(--primary-dark);
 }
 
+/* --- Task Form Section --- */
+.taskFormSection {
+  background: white;
+  padding: 2.5rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 3rem;
+}
+
+.taskFormSection h2 {
+  font-size: 1.5rem;
+  color: var(--primary-dark);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.taskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.taskForm input[type="text"],
+.taskForm input[type="date"],
+.taskForm textarea,
+.taskForm select {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  background: var(--gray-50);
+  font-size: 0.95rem;
+  transition: all var(--transition-base);
+}
+
+.taskForm textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.taskForm input:focus,
+.taskForm textarea:focus,
+.taskForm select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(90, 143, 125, 0.1);
+}
+
+.taskOptions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.myDayCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.submitButton, .cancelButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.submitButton {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.submitButton:hover {
+  background: var(--primary-dark);
+}
+
+.cancelButton {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border: 1px solid var(--gray-200);
+}
+
+.cancelButton:hover {
+  background: var(--gray-200);
+}
+
+/* --- Task List Section --- */
 .taskCard {
   background: white;
-  padding: 1.5rem;
-  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--gray-200);
   transition: all var(--transition-base);
   box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
 }
 
 .taskCard:hover {
-  border-color: var(--primary);
+  border-color: var(--primary-light);
   box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
 }
 
 .taskCard.completed {
   background: var(--gray-50);
-  opacity: 0.8;
+  opacity: 0.75;
 }
 
 .taskCard h3 {
-  font-size: 1.2rem;
-  color: var(--primary-text);
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--gray-900);
+  margin-bottom: 0.75rem;
 }
 
 .taskCard.completed h3 {
@@ -146,43 +257,47 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .myDayBadge {
-  background: rgba(90, 143, 125, 0.1);
+  background: rgba(90, 143, 125, 0.15);
   color: var(--primary-dark);
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 0.2rem 0.5rem;
+  padding: 0.3rem 0.75rem;
   border-radius: var(--radius-full);
+  text-transform: uppercase;
 }
 
 .taskDueDate, .taskListBadge {
   font-size: 0.85rem;
   color: var(--gray-500);
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
 }
 
 .taskCardActions {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
 }
 
 .taskCardActions button {
-  padding: 0.4rem 0.8rem;
-  font-size: 0.8rem;
-  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  border-radius: var(--radius-lg);
   border: 1px solid var(--gray-200);
-  background: white;
+  background: var(--gray-50);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
+  font-weight: 600;
+  color: var(--gray-700);
 }
 
 .taskCardActions button:hover {
   background: var(--gray-100);
+  border-color: var(--gray-300);
 }
 
 .modalOverlay {
@@ -191,19 +306,21 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  backdrop-filter: blur(4px);
 }
 
 .modal {
   background: white;
-  padding: 2rem;
-  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  border-radius: var(--radius-2xl);
   max-width: 500px;
-  width: 100%;
+  width: 90%;
+  box-shadow: var(--shadow-xl);
 }
 
 @keyframes fadeInUp {
@@ -220,5 +337,9 @@
 @media (max-width: 1024px) {
   .contentWrapper {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .sidebar {
+    padding: 1.5rem;
   }
 }
