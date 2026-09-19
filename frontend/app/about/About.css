@@ -69,16 +69,24 @@ section {
   animation: pulse 2s infinite;
 }
 
-.about-hero h1 {
-  font-size: 4.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
-  filter: drop-shadow(0 0 30px rgba(90, 143, 125, 0.15));
+.hero-visual-container {
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-productivity-icon {
+  width: 120px;
+  height: 120px;
+  background: white;
+  border-radius: var(--radius-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  border: 2px solid var(--primary-light);
+  box-shadow: var(--shadow-glow);
+  animation: float 4s ease-in-out infinite;
 }
 
 .hero-description {
