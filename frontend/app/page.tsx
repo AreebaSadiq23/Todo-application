@@ -34,9 +34,11 @@ const Home = () => {
             <div className="workflow-animation">
               {/* Animated Todo workflow visual */}
               <div className="animation-box">
-                <div className="task-item"></div>
-                <div className="task-item"></div>
-                <div className="task-item"></div>
+                <div className="animation-line"></div>
+                <div className="animation-dot"></div>
+                <div className="task-item"><span></span></div>
+                <div className="task-item"><span></span></div>
+                <div className="task-item"><span></span></div>
               </div>
             </div>
           </div>
