@@ -3,249 +3,126 @@
    Modern, Attractive & Professional
    ======================================== */
 
-.features-page {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  color: var(--gray-900);
-  line-height: 1.6;
-  background: var(--background-gradient);
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Animated Background */
-.features-page::before {
-  content: '';
-  position: absolute;
-  top: -30%;
-  right: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(90, 143, 125, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: float 6s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.features-page::after {
-  content: '';
-  position: absolute;
-  bottom: -20%;
-  left: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(90, 143, 125, 0.05) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: float 8s ease-in-out infinite reverse;
-  pointer-events: none;
-}
-
-section {
-  position: relative;
-  z-index: 1;
-  padding: 5rem 2rem;
-}
-
-/* Hero Grid Section */
-.features-hero-grid {
+.interactive-workflow-section {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 4rem;
+  grid-template-columns: 1fr 1fr;
+  padding: 8rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 8rem 2rem 4rem;
+  gap: 4rem;
   align-items: center;
 }
 
-.hero-text-side h1 {
-  font-size: 3.5rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+.showcase-side {
+  padding: 2rem;
 }
 
-.hero-checks {
+.feature-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.feature-badge-purple { background: rgba(168, 85, 247, 0.1); color: #a855f7; }
+.feature-badge-green { background: rgba(107, 191, 138, 0.1); color: var(--success); }
+.feature-badge-blue { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+.feature-badge-orange { background: rgba(249, 115, 22, 0.1); color: #f97316; }
+.feature-badge-pink { background: rgba(236, 72, 153, 0.1); color: #ec4899; }
+.feature-badge-red { background: rgba(229, 115, 115, 0.1); color: var(--danger); }
+
+.feature-detail h1 { font-size: 3rem; margin-bottom: 1rem; }
+.feature-detail p { font-size: 1.1rem; color: var(--gray-600); margin-bottom: 2rem; }
+
+.progress-bar { height: 6px; width: 100%; background: var(--gray-200); border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; }
+.progress-purple { background: #a855f7; }
+.progress-green { background: var(--success); }
+.progress-blue { background: #3b82f6; }
+.progress-orange { background: #f97316; }
+.progress-pink { background: #ec4899; }
+.progress-red { background: var(--danger); }
+
+.workflow-side {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Features Grid (3x2) */
-.features-grid-side {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.feature-card {
-  padding: 2rem 1.5rem;
-  text-align: center;
-}
-
-/* Feature Highlights Row (3 side-by-side) */
-.highlights-section {
-  padding: 6rem 2rem;
-}
-
-.highlights-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.highlight-card {
-  background: white;
-  padding: 2.5rem;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--gray-200);
-  box-shadow: var(--shadow-md);
-  text-align: center;
-}
-
-.highlight-card h3 {
-  margin-top: 1rem;
-  color: var(--primary-dark);
-}
-
-/* Responsive Overrides */
-@media (max-width: 1024px) {
-  .features-hero-grid { grid-template-columns: 1fr; text-align: center; }
-  .features-grid-side { grid-template-columns: repeat(2, 1fr); }
-  .highlights-row { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 768px) {
-  .features-grid-side { grid-template-columns: 1fr; }
-  .highlights-row { grid-template-columns: 1fr; }
-}
-
-.feature-card {
-  background: var(--gray-50);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--gray-200);
-  border-radius: 20px;
-  padding: 3rem 2rem;
-  box-shadow: var(--shadow-md);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* Reusing Circular Layout Styles */
+.circular-layout {
   position: relative;
-  overflow: hidden;
+  width: 300px;
+  height: 300px;
 }
 
-.feature-card::before {
-  content: '';
+.snake-svg {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(90, 143, 125, 0.05) 0%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
 }
 
-.feature-card:hover::before {
-  opacity: 1;
+.snake-track {
+  stroke: var(--gray-200);
+  stroke-width: 4;
 }
 
-.feature-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 20px 60px rgba(90, 143, 125, 0.15);
-  border-color: var(--primary);
+.snake-body {
+  stroke: var(--primary);
+  stroke-width: 4;
+  stroke-dasharray: 295;
+  stroke-dashoffset: 295;
+  animation: snakeRotate 6s linear infinite;
 }
 
-/* Color variants */
-.feature-card-purple {
-  border-color: rgba(168, 85, 247, 0.15);
-}
-.feature-card-purple:hover {
-  border-color: rgba(168, 85, 247, 0.35);
-  box-shadow: 0 20px 60px rgba(168, 85, 247, 0.15);
-}
-.feature-card-purple .feature-icon {
-  background: rgba(168, 85, 247, 0.1);
-  color: #a855f7;
+@keyframes snakeRotate {
+  to { stroke-dashoffset: 0; }
 }
 
-.feature-card-green {
-  border-color: rgba(107, 191, 138, 0.15);
-}
-.feature-card-green:hover {
-  border-color: rgba(107, 191, 138, 0.35);
-  box-shadow: 0 20px 60px rgba(107, 191, 138, 0.15);
-}
-.feature-card-green .feature-icon {
-  background: rgba(107, 191, 138, 0.15);
-  color: var(--success);
-}
-
-.feature-card-blue {
-  border-color: rgba(59, 130, 246, 0.15);
-}
-.feature-card-blue:hover {
-  border-color: rgba(59, 130, 246, 0.35);
-  box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
-}
-.feature-card-blue .feature-icon {
-  background: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
-}
-
-.feature-card-orange {
-  border-color: rgba(249, 115, 22, 0.15);
-}
-.feature-card-orange:hover {
-  border-color: rgba(249, 115, 22, 0.35);
-  box-shadow: 0 20px 60px rgba(249, 115, 22, 0.15);
-}
-.feature-card-orange .feature-icon {
-  background: rgba(249, 115, 22, 0.1);
-  color: #f97316;
-}
-
-.feature-card-pink {
-  border-color: rgba(236, 72, 153, 0.15);
-}
-.feature-card-pink:hover {
-  border-color: rgba(236, 72, 153, 0.35);
-  box-shadow: 0 20px 60px rgba(236, 72, 153, 0.15);
-}
-.feature-card-pink .feature-icon {
-  background: rgba(236, 72, 153, 0.1);
-  color: #ec4899;
-}
-
-.feature-card-red {
-  border-color: rgba(229, 115, 115, 0.15);
-}
-.feature-card-red:hover {
-  border-color: rgba(229, 115, 115, 0.35);
-  box-shadow: 0 20px 60px rgba(229, 115, 115, 0.15);
-}
-.feature-card-red .feature-icon {
-  background: rgba(229, 115, 115, 0.1);
-  color: var(--danger);
-}
-
-.feature-icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 18px;
+.circle-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin-top: -30px;
+  margin-left: -30px;
+  background: white;
+  border: 2px solid var(--gray-200);
+  border-radius: 50%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  align-items: center;
+  font-weight: 700;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.feature-card:hover .feature-icon {
-  transform: scale(1.1);
+.circle-node.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: scale(1.3) !important;
+}
+
+.center-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: var(--primary-dark);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
 }
 
 .feature-card h3 {
