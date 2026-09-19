@@ -270,12 +270,106 @@
   }
 }
 
-@media (max-width: 1024px) {
-  .contentWrapper {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  .sidebar {
-    padding: 1.5rem;
-  }
+/* --- Task Form Section --- */
+.taskFormSection {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
 }
+
+.taskFormSection h2 {
+  font-size: 1.25rem;
+  color: var(--primary-dark);
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+}
+
+.taskForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.taskFormInput,
+.taskFormTextarea,
+.taskFormSelect {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  background: var(--gray-50);
+  font-size: 0.95rem;
+  transition: all var(--transition-base);
+}
+
+.taskFormTextarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.taskFormInput:focus,
+.taskFormTextarea:focus,
+.taskFormSelect:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 2px rgba(90, 143, 125, 0.1);
+}
+
+.taskOptionsRow {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.myDayCheckboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--gray-700);
+  font-size: 0.9rem;
+}
+
+.formActionsContainer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.actionButton {
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-size: 0.9rem;
+  border: none;
+}
+
+.submitAction {
+  background: var(--primary);
+  color: white;
+}
+
+.submitAction:hover {
+  background: var(--primary-dark);
+}
+
+.cancelAction {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border: 1px solid var(--gray-200);
+}
+
+.cancelAction:hover {
+  background: var(--gray-200);
+}
+
