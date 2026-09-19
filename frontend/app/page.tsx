@@ -20,31 +20,42 @@ const Home = () => {
   return (
     <div className="home-page">
       <section className="hero-section">
-        <div className="hero-content-left">
-          <h1>Effortlessly organize your daily tasks</h1>
-          <p>
-            A professional approach to task management. Stay focused, 
-            balanced, and productive with our clean and intuitive interface.
-          </p>
-          <button className="button-get-started" onClick={handleGetStarted}>Get Started</button>
+        <h1 className="hero-title">Master Your Daily Productivity</h1>
+        <p className="hero-subtitle">
+          The professional Todo application designed for clarity, focus, and getting things done.
+        </p>
+        <button className="button-get-started" onClick={handleGetStarted}>
+          Get Started
+        </button>
+        <div className="hero-visual">
+          {/* Subtle productivity visual placeholder */}
+          <div className="visual-placeholder">✓</div>
         </div>
       </section>
 
-      <section className="info-section">
-        <div className="info-grid">
-          <div className="info-card">
-            <h3>Intelligent Organization</h3>
-            <p>Streamline your workflow with tools designed for clarity and focus.</p>
+      <section className="features-section">
+        <h2 className="section-title">Built for Performance</h2>
+        <div className="features-grid">
+          <div className="feature-card">
+            <h3>Focus Mode</h3>
+            <p>Prioritize what matters most with smart, intuitive task management.</p>
           </div>
-          <div className="info-card">
-            <h3>Reliable Syncing</h3>
-            <p>Access your tasks from anywhere, ensuring you're always prepared.</p>
+          <div className="feature-card">
+            <h3>Seamless Sync</h3>
+            <p>Your tasks available instantly on all your devices, securely.</p>
           </div>
-          <div className="info-card">
-            <h3>Professional Design</h3>
-            <p>Experience a task manager built for productivity and aesthetic balance.</p>
+          <div className="feature-card">
+            <h3>Smart Lists</h3>
+            <p>Organize effortlessly with auto-categorized, intelligent task lists.</p>
           </div>
         </div>
+      </section>
+
+      <section className="cta-section">
+        <h2>Ready to get organized?</h2>
+        <button className="button-cta" onClick={handleGetStarted}>
+          Launch My Dashboard
+        </button>
       </section>
     </div>
   );
