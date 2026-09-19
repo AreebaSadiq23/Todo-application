@@ -31,18 +31,13 @@ const Home = () => {
             </button>
           </div>
           <div className="hero-visual">
-            <div className="workflow-chain">
-              <div className="chain-node">Create</div>
-              <div className="chain-connector"></div>
-              <div className="chain-node">Add</div>
-              <div className="chain-connector"></div>
-              <div className="chain-node">Edit</div>
-              <div className="chain-connector"></div>
-              <div className="chain-node">Update</div>
-              <div className="chain-connector"></div>
-              <div className="chain-node">View</div>
-              <div className="chain-connector"></div>
-              <div className="chain-node">Delete</div>
+            <div className="circular-layout">
+              <div className="circle-node create">Create</div>
+              <div className="circle-node add">Add</div>
+              <div className="circle-node edit">Edit</div>
+              <div className="circle-node update">Update</div>
+              <div className="circle-node view">View</div>
+              <div className="circle-node delete">Delete</div>
             </div>
           </div>
         </div>

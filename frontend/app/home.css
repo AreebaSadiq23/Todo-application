@@ -56,45 +56,45 @@
   box-shadow: var(--shadow-lg);
 }
 
-/* Workflow Chain */
-.workflow-chain {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  background: white;
-  border-radius: var(--radius-2xl);
-  border: 1px solid var(--gray-200);
-  box-shadow: var(--shadow-xl);
-  width: 100%;
-  max-width: 300px;
+/* Static Circular Workflow */
+.circular-layout {
+  position: relative;
+  width: 300px;
+  height: 300px;
   margin: 0 auto;
+  border: 2px dashed var(--primary-light);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.chain-node {
-  width: 100%;
-  padding: 1rem 2rem;
-  background: var(--gray-50);
+.circle-node {
+  position: absolute;
+  padding: 0.8rem 1.5rem;
+  background: white;
   border: 2px solid var(--primary-light);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-full);
   font-weight: 700;
   color: var(--primary-dark);
-  text-align: center;
+  box-shadow: var(--shadow-md);
   transition: all var(--transition-base);
 }
 
-.chain-node:hover {
+.circle-node:hover {
   background: var(--primary);
   color: white;
-  transform: scale(1.05);
+  transform: scale(1.1);
+  border-color: var(--primary);
 }
 
-.chain-connector {
-  width: 3px;
-  height: 20px;
-  background: var(--primary-light);
-  margin: 0.25rem 0;
-}
+/* Positioning labels in a circle */
+.create { top: -20px; left: 50%; transform: translateX(-50%); }
+.add { top: 20%; right: -20px; }
+.edit { bottom: 20%; right: -20px; }
+.update { bottom: -20px; left: 50%; transform: translateX(-50%); }
+.view { bottom: 20%; left: -20px; }
+.delete { top: 20%; left: -20px; }
 
 .features-section {
   padding: 6rem 2rem;
