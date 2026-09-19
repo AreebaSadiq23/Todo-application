@@ -7,7 +7,7 @@
   background: var(--glass-bg);
   backdrop-filter: blur(12px);
   padding: 1rem 2.5rem;
-  border-bottom: 1px solid var(--glass-border);
+  /* Removed border-bottom */
   position: sticky;
   top: 0;
   z-index: 1000;
