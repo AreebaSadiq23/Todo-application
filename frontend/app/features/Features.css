@@ -46,47 +46,45 @@ section {
   padding: 5rem 2rem;
 }
 
-/* Hero Section */
-.features-hero {
-  text-align: left;
-  padding: 8rem 2rem 6rem;
+/* Hero Grid Section */
+.features-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4rem;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.hero-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  padding: 8rem 2rem 4rem;
   align-items: center;
 }
 
-.hero-visual {
-  display: flex;
-  justify-content: center;
+.hero-text-side h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
 }
 
-.hero-icon-large {
-  width: 200px;
-  height: 200px;
-  background: white;
-  border-radius: var(--radius-2xl);
+.hero-checks {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary);
-  border: 2px solid var(--primary-light);
-  box-shadow: var(--shadow-glow);
-  animation: float 4s ease-in-out infinite;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2rem;
 }
 
 /* Features Grid (3x2) */
-.features-grid {
+.features-grid-side {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  gap: 1.5rem;
+}
+
+.feature-card {
+  padding: 2rem 1.5rem;
+  text-align: center;
 }
 
 /* Feature Highlights Row (3 side-by-side) */
@@ -118,13 +116,13 @@ section {
 
 /* Responsive Overrides */
 @media (max-width: 1024px) {
-  .hero-content { grid-template-columns: 1fr; text-align: center; }
-  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .features-hero-grid { grid-template-columns: 1fr; text-align: center; }
+  .features-grid-side { grid-template-columns: repeat(2, 1fr); }
   .highlights-row { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .features-grid { grid-template-columns: 1fr; }
+  .features-grid-side { grid-template-columns: 1fr; }
   .highlights-row { grid-template-columns: 1fr; }
 }
 

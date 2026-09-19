@@ -94,37 +94,26 @@ const IconComponent = ({ type, color }: { type: IconType; color: string }) => {
 export default function Features() {
   return (
     <div className="features-page">
-      {/* Hero Section */}
-      <section className="features-hero">
-        <div className="hero-content">
-          <div className="hero-text">
-            <div className="hero-badge">Powerful Features</div>
-            <h1>Everything You Need</h1>
-            <p className="hero-description">
-              Discover the tools that will revolutionize how you manage tasks, track progress, and achieve your goals.
-            </p>
-          </div>
-          <div className="hero-visual">
-            <div className="hero-icon-large">
-              <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="9" y1="9" x2="15" y2="9"></line>
-                <line x1="9" y1="13" x2="15" y2="13"></line>
-                <line x1="9" y1="17" x2="15" y2="17"></line>
-              </svg>
-            </div>
+      {/* Main Hero & Features Grid Section */}
+      <section className="features-hero-grid">
+        <div className="hero-text-side">
+          <div className="hero-badge">Power User</div>
+          <h1>Everything You Need</h1>
+          <p className="hero-description">
+            Discover the tools that will revolutionize how you manage tasks, track progress, and achieve your goals.
+          </p>
+          <div className="hero-checks">
+            <div className="check-item"><span>Easy to Use</span></div>
+            <div className="check-item"><span>Cloud Powered</span></div>
+            <div className="check-item"><span>Always Synced</span></div>
           </div>
         </div>
-      </section>
-
-      {/* Features Grid (3x2) */}
-      <section className="features-grid-section">
-        <div className="features-grid">
+        
+        <div className="features-grid-side">
           {features.map((feature, index) => (
             <div key={index} className={`feature-card feature-card-${feature.color}`}>
               <IconComponent type={feature.icon} color={feature.color} />
               <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
             </div>
           ))}
         </div>
@@ -136,15 +125,15 @@ export default function Features() {
         <div className="highlights-row">
           <div className="highlight-card highlight-green">
             <h3>Intelligent Organization</h3>
-            <p>Smart algorithms help you organize tasks automatically. Set priorities, deadlines, and categories with ease.</p>
+            <p>Smart algorithms help you organize tasks automatically.</p>
           </div>
           <div className="highlight-card highlight-blue">
             <h3>Seamless Experience</h3>
-            <p>Switch between devices effortlessly. Your tasks sync in real-time across all platforms.</p>
+            <p>Switch between devices effortlessly. Your tasks sync in real-time.</p>
           </div>
           <div className="highlight-card highlight-purple">
             <h3>Enterprise Security</h3>
-            <p>Your data is protected with industry-standard encryption, secure authentication, and regular backups.</p>
+            <p>Data protected with industry-standard encryption and backups.</p>
           </div>
         </div>
       </section>
