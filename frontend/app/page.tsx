@@ -36,9 +36,9 @@ const Home = () => {
               <div className="animation-box">
                 <div className="animation-line"></div>
                 <div className="animation-dot"></div>
-                <div className="task-item"><span></span></div>
-                <div className="task-item"><span></span></div>
-                <div className="task-item"><span></span></div>
+                <div className="task-item"><span>Add Task</span></div>
+                <div className="task-item"><span>Edit Task</span></div>
+                <div className="task-item"><span>Delete Task</span></div>
               </div>
             </div>
           </div>

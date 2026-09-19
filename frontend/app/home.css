@@ -102,21 +102,20 @@
 }
 
 .task-item {
-  height: 40px;
+  height: 50px;
   background: var(--gray-50);
   border: 1px solid var(--gray-200);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   width: 100%;
   display: flex;
   align-items: center;
-  padding-left: 1rem;
+  padding-left: 2rem;
+  font-weight: 600;
+  color: var(--primary-dark);
 }
 
 .task-item span {
-  width: 150px;
-  height: 8px;
-  background: var(--gray-200);
-  border-radius: var(--radius-full);
+  font-size: 1rem;
 }
 
 .features-section {
