@@ -79,6 +79,26 @@ export default function Features() {
         </div>
       </section>
 
+      {/* Stats Section */}
+      <section className="stats-section">
+        <div className="stat-item">
+          <div className="stat-number">50+</div>
+          <div className="stat-label">Features</div>
+        </div>
+        <div className="stat-item">
+          <div className="stat-number">24/7</div>
+          <div className="stat-label">Availability</div>
+        </div>
+        <div className="stat-item">
+          <div className="stat-number">100%</div>
+          <div className="stat-label">Secure</div>
+        </div>
+        <div className="stat-item">
+          <div className="stat-number">Free</div>
+          <div className="stat-label">to Start</div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="cta-section">
         <div className="cta-glow"></div>
