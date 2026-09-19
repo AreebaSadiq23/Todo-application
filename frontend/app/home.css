@@ -81,12 +81,20 @@
   transition: all var(--transition-base);
 }
 
-.circle-node:hover {
-  background: var(--primary);
+.center-node {
+  position: absolute;
+  padding: 1rem;
+  background: var(--primary-dark);
   color: white;
-  transform: scale(1.1);
-  border-color: var(--primary);
+  border: 2px solid white;
+  font-weight: 800;
+  font-size: 1.2rem;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+
 
 /* Positioning labels in a circle */
 .create { top: -20px; left: 50%; transform: translateX(-50%); }
@@ -95,6 +103,7 @@
 .update { bottom: -20px; left: 50%; transform: translateX(-50%); }
 .view { bottom: 20%; left: -20px; }
 .delete { top: 20%; left: -20px; }
+
 
 .features-section {
   padding: 6rem 2rem;

@@ -32,6 +32,7 @@ const Home = () => {
           </div>
           <div className="hero-visual">
             <div className="circular-layout">
+              <div className="circle-node center-node">CRUD</div>
               <div className="circle-node create">Create</div>
               <div className="circle-node add">Add</div>
               <div className="circle-node edit">Edit</div>
