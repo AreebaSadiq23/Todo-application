@@ -32,17 +32,19 @@ const Home = () => {
           </div>
           <div className="hero-visual">
             <div className="circular-layout">
-              <svg className="snake-svg" viewBox="0 0 100 100">
-                <circle className="snake-track" cx="50" cy="50" r="47" fill="none" />
-                <circle className="snake-body" cx="50" cy="50" r="47" fill="none" />
-              </svg>
-              <div className="circle-node center-node">CRUD</div>
-              <div className="circle-node create active-glow" style={{ animationDelay: '0s' }}>Create</div>
-              <div className="circle-node add active-glow" style={{ animationDelay: '1s' }}>Add</div>
-              <div className="circle-node edit active-glow" style={{ animationDelay: '2s' }}>Edit</div>
-              <div className="circle-node update active-glow" style={{ animationDelay: '3s' }}>Update</div>
-              <div className="circle-node view active-glow" style={{ animationDelay: '4s' }}>View</div>
-              <div className="circle-node delete active-glow" style={{ animationDelay: '5s' }}>Delete</div>
+              <div className="circular-layout-inner">
+                <svg className="snake-svg" viewBox="0 0 100 100">
+                  <circle className="snake-track" cx="50" cy="50" r="47" fill="none" />
+                  <circle className="snake-body" cx="50" cy="50" r="47" fill="none" />
+                </svg>
+                <div className="circle-node center-node">CRUD</div>
+                <div className="circle-node create active-glow" style={{ animationDelay: '0s' }}>Create</div>
+                <div className="circle-node add active-glow" style={{ animationDelay: '1s' }}>Add</div>
+                <div className="circle-node edit active-glow" style={{ animationDelay: '2s' }}>Edit</div>
+                <div className="circle-node update active-glow" style={{ animationDelay: '3s' }}>Update</div>
+                <div className="circle-node view active-glow" style={{ animationDelay: '4s' }}>View</div>
+                <div className="circle-node delete active-glow" style={{ animationDelay: '5s' }}>Delete</div>
+              </div>
             </div>
           </div>
         </div>
