@@ -56,64 +56,44 @@
   box-shadow: var(--shadow-lg);
 }
 
-/* Circular Workflow Animation */
-.circular-workflow {
+/* Workflow Chain */
+.workflow-chain {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding: 3rem;
-}
-
-.circle-track {
-  width: 250px;
-  height: 250px;
-  border: 3px dashed var(--primary-light);
-  border-radius: 50%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.circle-animation {
-  width: 220px;
-  height: 220px;
-  position: relative;
-  animation: rotateCircle 15s linear infinite;
-}
-
-.workflow-dot {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  background: var(--primary);
-  border-radius: 50%;
-  box-shadow: 0 0 15px var(--primary);
-}
-
-.label {
-  position: absolute;
-  font-weight: 600;
-  color: var(--primary-dark);
+  padding: 2rem;
   background: white;
-  padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-full);
-  font-size: 0.85rem;
-  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-xl);
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
-.create { top: 0; left: 50%; transform: translate(-50%, -50%); }
-.add { top: 50%; right: -20px; transform: translate(0, -50%); }
-.edit { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
-.delete { top: 50%; left: -20px; transform: translate(0, -50%); }
-.update { top: 20%; right: 10%; transform: translate(50%, -50%); }
-.view { bottom: 20%; right: 10%; transform: translate(50%, 50%); }
+.chain-node {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: var(--gray-50);
+  border: 2px solid var(--primary-light);
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  color: var(--primary-dark);
+  text-align: center;
+  transition: all var(--transition-base);
+}
 
-@keyframes rotateCircle {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.chain-node:hover {
+  background: var(--primary);
+  color: white;
+  transform: scale(1.05);
+}
+
+.chain-connector {
+  width: 3px;
+  height: 20px;
+  background: var(--primary-light);
+  margin: 0.25rem 0;
 }
 
 .features-section {
