@@ -208,12 +208,12 @@
 
 .taskCard {
   background: white;
-  padding: 1.75rem;
+  padding: 1.5rem;
   border-radius: var(--radius-xl);
   border: 1px solid var(--gray-200);
   transition: all var(--transition-base);
   box-shadow: var(--shadow-sm);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -224,88 +224,50 @@
   transform: translateY(-2px);
 }
 
-.taskCard.completed {
-  background: var(--gray-50);
-  opacity: 0.7;
-}
-
-.taskCard h3 {
-  font-size: 1.15rem;
-  color: var(--gray-900);
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.taskCard.completed h3 {
-  text-decoration: line-through;
-  color: var(--gray-500);
-}
-
-.taskDescription {
-  font-size: 0.95rem;
-  color: var(--gray-600);
-  margin-bottom: 1rem;
-}
-
 .taskCardHeader {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 0.5rem;
 }
 
-.myDayBadge {
-  background: rgba(90, 143, 125, 0.1);
-  color: var(--primary-dark);
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--radius-full);
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
-}
-
-.taskDueDate {
-  font-size: 0.8rem;
-  color: var(--primary);
+.taskCard h3 {
+  font-size: 1.1rem;
+  color: var(--gray-900);
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
+  margin: 0;
 }
 
-.taskListBadge {
-  font-size: 0.8rem;
-  color: var(--gray-500);
-  background: var(--gray-100);
-  padding: 0.2rem 0.5rem;
-  border-radius: var(--radius-sm);
+.taskDescription {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  margin-bottom: 1rem;
+  line-height: 1.4;
 }
 
 .taskMeta {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-top: auto;
-  padding-top: 1rem;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .taskCardActions {
   display: flex;
   gap: 0.5rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
+  border-top: 1px solid var(--gray-100);
+  padding-top: 1rem;
 }
 
 .taskCardActions button {
   padding: 0.4rem 0.75rem;
-  font-size: 0.8rem;
-  border-radius: var(--radius-lg);
+  font-size: 0.75rem;
+  border-radius: var(--radius-md);
   border: 1px solid var(--gray-200);
   background: white;
   cursor: pointer;
   transition: all var(--transition-base);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--gray-700);
 }
 
@@ -314,11 +276,6 @@
   border-color: var(--gray-300);
 }
 
-.taskCardActions button.completeButton:hover {
-  background: var(--success);
-  color: white;
-  border-color: var(--success);
-}
 
 
 .modalOverlay {
