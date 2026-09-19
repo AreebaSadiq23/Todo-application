@@ -48,13 +48,27 @@
   height: fit-content;
 }
 
-.sidebar h2 {
-  font-size: 1rem;
-  color: var(--primary);
-  margin-bottom: 1.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 700;
+.controls {
+  margin-bottom: 2rem;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-200);
+  margin-bottom: 1rem;
+}
+
+.filterButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filterButtons button {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 0.85rem;
 }
 
 .sidebar button {
